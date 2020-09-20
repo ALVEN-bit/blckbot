@@ -48,8 +48,9 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = `
-anti ban [number]
+    let Dashboard = ` __**OwnerShip Commands**__ 🔻
+
+> &{prefix}anti ban [number]
 anti kick [number]
 anti channelD [number]
 anti channelC [number]
