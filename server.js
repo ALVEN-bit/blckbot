@@ -30,8 +30,8 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client.login("NzMyMTU4ODA2MjA0ODc0Nzcy.XwwiBg.W3jvCsG0GaNWqol5wJVCEyFKcog"); ////////////////mrfix
-const prefix = "2!";
+client.login("token"); ////////////////mrfix
+const prefix = "prefix";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
@@ -40,7 +40,7 @@ client.on("ready", () => {
 });
 // ======== { • playing • }======== //
 client.on("ready", () => {
-  client.user.setActivity("help | it’s time to secure your server", {
+  client.user.setActivity("2help | it’s time to secure your server", {
     type: "PLAYING"
   }); ////////////////mrfix
   client.user.setStatus("ONLINE");
@@ -48,7 +48,7 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = ` __**OwnerShip Commands**__
+    let Dashboard = `
 anti ban [number]
 anti kick [number]
 anti channelD [number]
@@ -863,17 +863,16 @@ client.on("guildMemberRemove", async member => {
 });
 // ======== { • anti bots • }======== //
 
-///quire antihack.json file
-
+let antibots = JSON.parse(fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
 client.on("message", message => {
   if (message.content.startsWith(prefix + "antibots on")) {
     if (!message.channel.guild) return;
     if (!message.member.hasPermission("Ownership")) return;
-    client[message.guild.id] = {
+    antibots[message.guild.id] = {
       onoff: "On"
     };
     message.channel.send(`**➕ | The antibots is \`ON\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(client), err => {
+    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
@@ -886,11 +885,11 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "antibots off")) {
     if (!message.channel.guild) return;
     if (!message.member.hasPermission("Ownership")) return;
-    client[message.guild.id] = {
+    antibots[message.guild.id] = {
       onoff: "Off"
     };
     message.channel.send(`**➖ | The antibots is \`OFF\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(), err => {
+    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
