@@ -30,8 +30,8 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client.login("token"); ////////////////mrfix
-const prefix = "prefix";
+client.login(process.env.TOKEN);
+const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
@@ -40,7 +40,7 @@ client.on("ready", () => {
 });
 // ======== { • playing • }======== //
 client.on("ready", () => {
-  client.user.setActivity("2help | it’s time to secure your server", {
+  client.user.setActivity(`2!help | it’s time to secure your server`,`2!help | BlackStorm`,{
     type: "PLAYING"
   }); ////////////////mrfix
   client.user.setStatus("ONLINE");
@@ -48,20 +48,22 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = ` __**OwnerShip Commands**__ 🔻
+    let Dashboard = ` **__OwnerShip Commands__** 🔻
 
-> &{prefix}anti ban [number]
-anti kick [number]
-anti channelD [number]
-anti channelC [number]
-anti roleD [number]
-anti roleC [number]
-anti time [number]
-antibots [on / off]
-settings
+> 2!anti ban [number]
+> 2!anti kick [number]
+> 2!anti channelD [number]
+> 2!anti channelC [number]
+> 2!anti roleD [number]
+> 2!anti roleC [number]
+> 2!anti time [number]
+> 2!antibots [on / off]
+> 2!settings
 
-lock
-unlock
+**__Admin Commands__** 🔻
+
+> 2!lock
+> 2!unlock
 
 invite
 about
