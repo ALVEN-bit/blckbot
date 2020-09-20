@@ -48,7 +48,7 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = `
+    let Dashboard = ` __**OwnerShip Commands**__
 anti ban [number]
 anti kick [number]
 anti channelD [number]
@@ -863,16 +863,17 @@ client.on("guildMemberRemove", async member => {
 });
 // ======== { • anti bots • }======== //
 
-let antibots = JSON.parse(fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
+///quire antihack.json file
+
 client.on("message", message => {
   if (message.content.startsWith(prefix + "antibots on")) {
     if (!message.channel.guild) return;
     if (!message.member.hasPermission("Ownership")) return;
-    antibots[message.guild.id] = {
+    client[message.guild.id] = {
       onoff: "On"
     };
     message.channel.send(`**➕ | The antibots is \`ON\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
+    fs.writeFile("./antibots.json", JSON.stringify(client), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
@@ -885,11 +886,11 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "antibots off")) {
     if (!message.channel.guild) return;
     if (!message.member.hasPermission("Ownership")) return;
-    antibots[message.guild.id] = {
+    client[message.guild.id] = {
       onoff: "Off"
     };
     message.channel.send(`**➖ | The antibots is \`OFF\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
+    fs.writeFile("./antibots.json", JSON.stringify(), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
