@@ -48,7 +48,7 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = ` **__OwnerShip Commands__** 🔻
+    let Dashboard = ` __OwnerShip Commands__ 🔻
 
 > 2!anti ban [number]
 > 2!anti kick [number]
@@ -60,20 +60,22 @@ client.on("message", m => {
 > 2!antibots [on / off]
 > 2!settings
 
-**__Admin Commands__** 🔻
+__Admin Commands__ 🔻
 
 > 2!lock
 > 2!unlock
 
-invite
-about
-server
-user
-profile
-Best Discord __AntiSpam__
-Best Discord __AntiShare Everyone & Here & Link .__`;
-    var addserver = `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`;
-    var SUPPORT = `https://discord.gg/6ASrSeG`;
+__Public Commends__ 🔻
+
+> 2!invite
+> 2!about
+> 2!server
+> 2!user
+
+> Best Discord __AntiSpam__
+> Best Discord __AntiShare Everyone & Here & Link .__`;
+    var addserver = `https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot`;
+    var SUPPORT = `https://discord.gg/GqkgpGB`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
