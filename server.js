@@ -68,10 +68,11 @@ __Admin Commands__ 🔻
 
 > 2!lock
 > 2!unlock
+> 2!ban
+> 2!kick
 
 __Public Commends__ 🔻
 
-> 2!topinvites
 > 2!bots
 > 2!invite
 > 2!about
@@ -80,7 +81,7 @@ __Public Commends__ 🔻
 
 > Best Discord __AntiSpam__
 > Best Discord __AntiShare Everyone & Here & Link .__`;
-    var addserver = `https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot`;
+    var addserver = `https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot`;
     var SUPPORT = `https://discord.gg/GqkgpGB`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
@@ -119,6 +120,74 @@ client.on("message", async message => {
 });
 
     
+
+client.on('message', message => {
+
+    if(message.content.startsWith(`2!ban`)) {
+
+        if(message.member.hasPermission("BAN_MEMBERS")) {
+
+     let member = message.mentions.members.first();
+
+     if(member) {
+
+         member.ban('Optional reason for the audit logs').then(() => {
+
+             message.channel.send(`Successfully banned ${member}`);
+
+           }).catch(err => {
+
+             message.channel.send('I was unable to ban the user. Please check my permmisions.');
+
+             console.error(err);
+
+           });
+
+     } else {
+
+         message.channel.send("You need to mention a user!")
+
+     }
+
+ }
+
+    }
+
+ });
+
+client.on('message', message => {
+
+   if(message.content.startsWith(`2!kick`)) {
+
+       if(message.member.hasPermission("KICK_MEMBERS")) {
+
+    let member = message.mentions.members.first();
+
+    if(member) {
+
+        member.kick('Optional reason for the audit logs').then(() => {
+
+            message.channel.send(`Successfully kicked ${member}`);
+
+          }).catch(err => {
+
+            message.channel.send('I was unable to kick the user. Please check my permmisions.');
+
+            console.error(err);
+
+          });
+
+    } else {
+
+        message.channel.send("You need to mention a user!")
+
+    }
+
+}
+
+   }
+
+});
 // ======== { • invite • }======== //
 client.on("message", message => {
   if (message.content.startsWith(`${prefix}invite`)) {
@@ -127,7 +196,7 @@ client.on("message", message => {
       .setTitle("✨ | Click Here To Add BlackStorm Security ")
 
       .setURL(
-        "https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot"
+        "https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot"
       )
 
       .setTimestamp()
