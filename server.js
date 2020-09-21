@@ -272,7 +272,7 @@ client.on("message", message => {
       )
       .setFooter(
         `${message.author.username}`,
-        "https://media.discordapp.net/attachments/725981750135619594/753420592786702448/image0.gif"
+        "https://cdn.discordapp.com/attachments/622874137685262359/755868593455104090/20200916_221122.gif"
       )
       .setThumbnail(heg.avatarURL);
     message.channel.send(id);
