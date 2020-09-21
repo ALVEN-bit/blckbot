@@ -114,14 +114,14 @@ client.on("message", async message => {
 
 // ======== { • invite • }======== //
 client.on("message", message => {
-  if (message.content.startsWith(`2!invite`)) {
+  if (message.content.startsWith("2!invite")) {
     var embed = new Discord.RichEmbed()
       .setTitle("✨ | ClickHere To Add " + `${client.user.username}` + " .")
       .setURL("https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot") 
       ooter(`Requested By | ${message.author.username}`)
       .setImage(
-        "https://media.discordapp.neRANDOM");
-    message.channel.send({ embed });
+        "
+      .setImage("https://cdn.discordapp.com/attachments/622874137685262359/755868593455104090/20200916_221122.gif")ht  me ssage.channel.send({ embed });
   }
 });
 // ======== { • bot • }======== //
@@ -141,7 +141,7 @@ client.on("message", message => {
       .addField("**Channels** : ", `» ${client.channels.size} `, true)
       .addField("**Users** : ", `» ${client.users.size} `, true)
       .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
-      .addField("**Bot Owner** :  ", `» MrFIX`, true) // تعديل مهم عدل هذا الرقم لايدي حسابك
+      .addField("**Bot Owner** :  ", `» MrFIX`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
