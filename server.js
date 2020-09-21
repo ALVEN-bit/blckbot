@@ -113,6 +113,41 @@ client.on("message", async message => {
 });
 
 // ======== { • invite • }======== //
+client.on("message", message => {
+
+  if (message.content.startsWith(`${prefix}invite`)) {
+
+    var embed = new Discord.RichEmbed()
+
+      .setTitle("✨ | Click Here To Add BlackStorm Security ")
+
+      .setURL(
+
+        "https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot2"
+
+         
+
+       
+
+      )
+
+      .setTimestamp()
+
+      .setFooter(`Requested By | ${message.author.username}`)
+
+      .setImage(
+
+        "https://media.discordapp.net/attachments/725981750135619594/753420592786702448/image0.gif"
+
+      )
+
+      .setColor("RANDOM");
+
+    message.channel.send({ embed });
+
+  }
+
+});
 // ======== { • bot • }======== //
 
 client.on("message", message => {
