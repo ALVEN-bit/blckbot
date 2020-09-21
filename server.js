@@ -38,17 +38,38 @@ client.on("ready", () => {
   ////////////////mrfix
   console.log(`Logged in as ${client.user.tag}!`);
 });
-// ======== { • playing • }======== //
+
 client.on("ready", () => {
-  client.user.setActivity(
-    `2!help | it’s time to secure your server`,
-    `2!help | BlackStorm`,
-    {
-      type: "PLAYING"
-    }
-  ); ////////////////mrfix
-  client.user.setStatus("ONLINE");
+
+console.log(`Online In Servers : ${client.guilds.size} `);
+
+let statuses = [
+
+ `2!help | Its time to Secure your server`,
+
+  `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `,
+
+  
+
+];
+
+  
+
+  
+
+  setInterval(function() {
+
+let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
+
+client.user.setActivity(STREAMING, { type: "playing", url: "https://www.twitch.tv/faith"
+
 });
+
+}, 2000);
+
+});
+
+   
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
