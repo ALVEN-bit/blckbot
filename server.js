@@ -112,63 +112,21 @@ client.on("message", async message => {
   }
 });
 
-client.on("message", async message => {
-
-  if (message.content.startsWith(prefix + "unlock")) {
-
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-
-    if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS"))
-
-      return;
-
-    message.channel.overwritePermissions(message.guild.id, {
-
-      SEND_MESSAGES: null
-
-    });
-
-    message.channel.send(` **has been unlocked.**`);
-
-  }
-
-});
-
-client.on("message", async message => {
-  if (message.content.startsWith(prefix + "unlock")) {
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-    if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS"))
-      return;
-    message.channel.overwritePermissions(message.guild.id, {
-      SEND_MESSAGES: null
-    });
-    message.channel.send(` **has been unlocked.**`);
+// ======== { • invite • }======== //
+client.on("message", message => {
+  if (message.content.startsWith("2!invite")) {
+    var embed = new Discord.RichEmbed()
+      .setTitle("✨ | ClickHere To Add " + `${client.user.username}` + " .")
+      .setURL("https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot") 
+      ooter(`Requested By | ${message.author.username}`)
+      .setImage(
+        "
+      .setImage("https://cdn.discordapp.com/attachments/622874137685262359/755868593455104090/20200916_221122.gif")ht  me ssage.channel.send({ embed });
   }
 });
-// ======== { • invite • }======== //===== //
+// ======== { • bot • }======== //
 
-client.on("message", messaclient.on("message", async message => {
-
-  if (message.content.startsWith(prefix + "unlock")) {
-
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-
-    if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS"))
-
-      return;
-
-    message.channel.overwritePermissions(message.guild.id, {
-
-      SEND_MESSAGES: null
-
-    });
-
-    message.channel.send(` **has been unlocked.**`);
-
-  }
-
-});
-ge => {
+client.on("message", message => {
   let command = message.content.split(" ")[0];
   if (command == prefix + "about") {
     const bot = new Discord.RichEmbed()
