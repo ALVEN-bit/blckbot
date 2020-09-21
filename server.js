@@ -40,9 +40,13 @@ client.on("ready", () => {
 });
 // ======== { • playing • }======== //
 client.on("ready", () => {
-  client.user.setActivity(`2!help | it’s time to secure your server`,`2!help | BlackStorm`,{
-    type: "PLAYING"
-  }); ////////////////mrfix
+  client.user.setActivity(
+    `2!help | it’s time to secure your server`,
+    `2!help | BlackStorm`,
+    {
+      type: "PLAYING"
+    }
+  ); ////////////////mrfix
   client.user.setStatus("ONLINE");
 });
 // //===============================================[ •help• ]=============================================\\\\
@@ -114,39 +118,25 @@ client.on("message", async message => {
 
 // ======== { • invite • }======== //
 client.on("message", message => {
-
   if (message.content.startsWith(`${prefix}invite`)) {
-
     var embed = new Discord.RichEmbed()
 
       .setTitle("✨ | Click Here To Add BlackStorm Security ")
 
       .setURL(
-
-        "https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot2"
-
-         
-
-       
-
+        "https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot"
       )
 
       .setTimestamp()
 
       .setFooter(`Requested By | ${message.author.username}`)
 
-      .setImage(
-
-        "https://media.discordapp.net/attachments/725981750135619594/753420592786702448/image0.gif"
-
-      )
+      .setImage("")
 
       .setColor("RANDOM");
 
     message.channel.send({ embed });
-
   }
-
 });
 // ======== { • bot • }======== //
 
@@ -845,7 +835,8 @@ client.on("guildMemberRemove", async member => {
       setTimeout(() => {
         anti[member.guild.id + entry.id].actions = 0;
       }, config[member.guild.id].time * 1000 || 30000);
-      if (////////////////mrfix
+      if (
+        ////////////////mrfix
         anti[member.guild.id + entry.id].actions >=
         config[member.guild.id].kickLimits
       ) {
@@ -860,7 +851,8 @@ client.on("guildMemberRemove", async member => {
         anti[member.guild.id + entry.id].actions = 0;
         fs.writeFile("./config.json", JSON.stringify(config, null, 2), function(
           e
-        ) {////////////////mrfix
+        ) {
+          ////////////////mrfix
           if (e) throw e;
         });
         fs.writeFile(
@@ -934,7 +926,7 @@ fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
     console.error(err).catch(err => {
       console.error(err);
     });
-});////////////////mrfix
+}); ////////////////mrfix
 // ======== { • settings • }======== //
 ////////////////mrfix
 client.on("message", message => {
