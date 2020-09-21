@@ -71,6 +71,7 @@ __Admin Commands__ 🔻
 
 __Public Commends__ 🔻
 
+> 2!topinvites
 > 2!bots
 > 2!invite
 > 2!about
@@ -116,7 +117,55 @@ client.on("message", async message => {
     message.channel.send(` **has been unlocked.**`);
   }
 });
+client.on('message',message =>{
 
+    if(message.content.startsWith('2!topinvites')) {
+
+  message.guild.fetchInvites().then(i =>{
+
+  var invites = [];
+
+   
+
+  i.forEach(inv =>{
+
+    var [invs,i]=[{},null];
+
+     
+
+    if(inv.maxUses){
+
+        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+
+    }else{
+
+        invs[inv.code] =+ inv.uses;
+
+    }
+
+        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+
+   
+
+  });
+
+  var embed = new Discord.RichEmbed()
+
+  .setColor("#000000")
+
+  .setDescription(`${invites.join(`\n`)+'\n\n**Requested By:** '+message.author}`)
+
+           message.channel.send({ embed: embed });
+
+   
+
+  });
+
+   
+
+    }
+
+  });
 // ======== { • invite • }======== //
 client.on("message", message => {
   if (message.content.startsWith(`${prefix}invite`)) {
