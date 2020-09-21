@@ -71,6 +71,7 @@ __Admin Commands__ 🔻
 
 __Public Commends__ 🔻
 
+> 2!bots
 > 2!invite
 > 2!about
 > 2!server
@@ -155,7 +156,7 @@ client.on("message", message => {
       .addField("**Channels** : ", `» ${client.channels.size} `, true)
       .addField("**Users** : ", `» ${client.users.size} `, true)
       .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
-      .addField("**Bot Owner** :  ", `» MrFIX`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**Bot Owner** :  ", `» BlackStorm`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
