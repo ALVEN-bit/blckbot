@@ -114,20 +114,13 @@ client.on("message", async message => {
 
 // ======== { • invite • }======== //
 client.on("message", message => {
-  if (message.content.startsWith(`${prefix}invite`)) {
+  if (message.content.startsWith(`2!invite`)) {
     var embed = new Discord.RichEmbed()
       .setTitle("✨ | ClickHere To Add " + `${client.user.username}` + " .")
-      .setURL(
-        "https://discordapp.com/oauth2/authorize?client_id=" +
-          `${client.user.id}` +
-          "&scope=bot&permissions=2080374975"
-      )
-      .setTimestamp()
-      .setFooter(`Requested By | ${message.author.username}`)
+      .setURL("https://discord.com/api/oauth2/authorize?client_id=732158806204874772&permissions=8&scope=bot") 
+      ooter(`Requested By | ${message.author.username}`)
       .setImage(
-        "https://media.discordapp.net/attachments/725981750135619594/753420592786702448/image0.gif"
-      )
-      .setColor("RANDOM");
+        "https://media.discordapp.neRANDOM");
     message.channel.send({ embed });
   }
 });
