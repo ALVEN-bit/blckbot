@@ -89,8 +89,8 @@ __Admin Commands__ 🔻
 
 > 2!lock
 > 2!unlock
-> 2!ban
-> 2!kick
+> 2!ban [user] 
+> 2!kick [user] 
 > 2!voice
 > 2!clear [number] 
 
