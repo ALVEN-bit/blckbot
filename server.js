@@ -92,6 +92,7 @@ __Admin Commands__ 🔻
 > 2!ban
 > 2!kick
 > 2!voice
+> 2!clear [number] 
 
 __Public Commends__ 🔻
 
@@ -125,17 +126,12 @@ const number = word.slice(7, word.length);
 const int = Number(number);
 if (!message.member.hasPermission("MANAGE_MESSAGES")) {
 return message.channel.send(
-"تۆ ناتوانیت ئەم فرمانە ئەنجەم بدەیت `MANAGE_MESSAGE`چونکە ڕۆڵەکەی تۆ ئەمەی پێ نیە "
+"❌ | Sorry Your Role Not Support Command"
 );
-}581993882368213002
+}
 if (int >= 101) {
 return message.channel.send(
 "❌ | sorry `100+` massage Not Clear"
-);
-}
-if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-return message.channel.send(
-"ناتوانى "
 );
 }
 if (int == "1000") {
