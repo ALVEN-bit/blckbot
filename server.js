@@ -118,6 +118,40 @@ __Public Commends__ 🔻
 // ======== { • lock unlock • }======== //
 
 
+client.on("message", message => {
+if (message.content.split(" ")[0].toLowerCase() === "2!clear") {
+const word = message.content;
+const number = word.slice(7, word.length);
+const int = Number(number);
+if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+return message.channel.send(
+"تۆ ناتوانیت ئەم فرمانە ئەنجەم بدەیت `MANAGE_MESSAGE`چونکە ڕۆڵەکەی تۆ ئەمەی پێ نیە "
+);
+}581993882368213002
+if (int >= 101) {
+return message.channel.send(
+"❌ | sorry `100+` massage Not Clear"
+);
+}
+if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+return message.channel.send(
+"ناتوانى "
+);
+}
+if (int == "1000") {
+
+return message.channel.send("supply A Number to Delete");
+} else if (isNaN(int)) {
+return message.reply("Number");
+}
+message.channel.bulkDelete(int).then(() => {
+return message.channel
+.send(`Cleared ${int} messages.`)
+.then(m => m.delete(5000));
+});
+}
+});
+
 
 client.on('message', message => {
 
