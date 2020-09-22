@@ -116,6 +116,36 @@ __Public Commends__ 🔻
 });
 // ======== { • lock unlock • }======== //
 
+
+
+client.on('message', message => {
+
+if (!message.guild) return;
+
+if (message.content === '2!voice') {
+
+if (message.member.voiceChannel) {
+
+message.member.voiceChannel.join()
+
+.then(connection => { 
+
+message.reply('✔️ | __****__');
+
+})
+
+.catch(console.log);
+
+} else {
+
+message.reply('❌ | __**تکایە بچۆ چەنال ڤۆیسێک ئەنجا بەکاری بێنە**__');
+
+}
+
+}
+
+});
+
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "lock")) {
     if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
