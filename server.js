@@ -45,7 +45,7 @@ console.log(`Online In Servers : ${client.guilds.size} `);
 
 let statuses = [
 
- `2!help | Best Security`,
+ `2!help | BlackStorm Security`,
 
   `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `,
 
