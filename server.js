@@ -91,6 +91,7 @@ __Admin Commands__ 🔻
 > 2!unlock
 > 2!ban
 > 2!kick
+> 2!voice
 
 __Public Commends__ 🔻
 
@@ -130,7 +131,7 @@ message.member.voiceChannel.join()
 
 .then(connection => { 
 
-message.reply('✔️ | __****__');
+message.react('☑️');
 
 })
 
@@ -138,7 +139,7 @@ message.reply('✔️ | __****__');
 
 } else {
 
-message.reply('❌ | __**تکایە بچۆ چەنال ڤۆیسێک ئەنجا بەکاری بێنە**__');
+message.reply('❌ | __**please go voice Chanel and Use This Command**__');
 
 }
 
