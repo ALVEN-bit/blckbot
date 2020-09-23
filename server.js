@@ -109,7 +109,7 @@ fantic.react("🔓")
 
 client.on('guildCreate', guild => {
 
-client.channels.get("741037339597471819").send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
+client.channels.get("758277308624404511").send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
 
                                         
 
