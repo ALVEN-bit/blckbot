@@ -105,6 +105,24 @@ fantic.react("🔓")
 
 });
 
+ 
+
+client.on('guildCreate', guild => {
+
+client.channels.get("741037339597471819").send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
+
+                                        
+
+Server name: __${guild.name}__
+
+Server owner: __${guild.owner}__
+
+Server id: __${guild.id}__ 
+
+Server Count: __${guild.memberCount}__**`)
+
+}); 
+
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
