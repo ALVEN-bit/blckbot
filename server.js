@@ -69,7 +69,7 @@ client.user.setActivity(STREAMING, { type: "playing", url: "https://www.twitch.t
 
 });
 
-   
+  
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
