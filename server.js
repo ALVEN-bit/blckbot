@@ -69,7 +69,42 @@ client.user.setActivity(STREAMING, { type: "playing", url: "https://www.twitch.t
 
 });
 
-  
+  client.on('message', fantic => {
+
+if (fantic.content === "2!private") {
+
+if (!fantic.member.hasPermission("ADMINISTRATOR")) return fantic.react(":x:")
+
+fantic.channel.overwritePermissions(fantic.guild.id, {
+
+VIEW_CHANNEL: false
+
+});
+
+fantic.react("🔒")
+
+}
+
+});
+
+client.on('message', fantic => {
+
+if (fantic.content === "2!public") {
+
+if (!fantic.member.hasPermission("ADMINISTRATOR")) return fantic.react(":x:")
+
+fantic.channel.overwritePermissions(fantic.guild.id, {
+
+VIEW_CHANNEL: true
+
+});
+
+fantic.react("🔓")
+
+}
+
+});
+
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
@@ -89,6 +124,8 @@ __Admin Commands__ 🔻
 
 > 2!lock
 > 2!unlock
+> 2!public
+> 2!private
 > 2!ban [user] 
 > 2!kick [user] 
 > 2!voice
