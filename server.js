@@ -44,10 +44,7 @@ client.on("ready", () => {
 console.log(`Online In Servers : ${client.guilds.size} `);
 
 let statuses = [
-
- `2!help | BlackStorm Security`,
-
-  `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `,
+  `2!help | It's time to secure your server`,
 
   
 
