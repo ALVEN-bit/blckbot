@@ -327,7 +327,7 @@ client.on("message", message => {
   if (message.content.startsWith(`${prefix}invite`)) {
     var embed = new Discord.RichEmbed()
 
-      .setTitle("✨ | Click Here To Add BlackStorm Security ")
+      .setTitle("✨ | Click Here To Add Pro Security ")
 
       .setURL(
         "https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot"
