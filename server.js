@@ -366,12 +366,12 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "anti")) {
     if (message.author.id !== message.guild.owner.user.id)
       return message.channel.send(
-        "**❌ | دەتوانێ ئەمکارە بکات`OwnerShip`تەنها .**"
+        "**❌ | تەنها`OwnerShip`دەتوانێ ئەمکارە بکات .**"
       );
     if (message.content.startsWith(prefix + "anti ban")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         );
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -383,7 +383,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti kick")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         );
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -395,7 +395,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti roleD")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         );
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -407,7 +407,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti roleC")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         ); ////////////////mrfix
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -419,7 +419,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti channelD")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         ); ////////////////mrfix
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -432,7 +432,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti channelC")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         ); ////////////////mrfix
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -444,7 +444,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti time")) {
       if (!num)
         return message.channel.send(
-          "**❌ | Type A `Number` After Commands .**"
+          "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
         );
       if (isNaN(num))
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
@@ -938,7 +938,7 @@ client.on("guildMemberRemove", async member => {
 });
 // ======== { • anti bots • }======== //
 
-let antibots = JSON.parse(fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
+plet antibots = JSON.parse(fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
 client.on("message", message => {
   if (message.content.startsWith(prefix + "antibots on")) {
     if (!message.channel.guild) return;
