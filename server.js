@@ -198,6 +198,7 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!mute
 > 2!unmute
 > 2!say
+> 2!bc
 
 __ژورەکان بەم شێوەیە لێبکە__🔻
 
@@ -287,7 +288,7 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "avatar")) {
     const embed = new Discord.RichEmbed()
       .setAuthor(mm.user.tag, mm.user.avatarURL)
-      .setTitle("Avatar Link")
+      .setTitle("ئەمە لینکی وێنەکەتە")
       .setURL(mm.user.avatarURL)
       .setImage(mm.user.avatarURL)
       .setFooter(
@@ -306,7 +307,7 @@ client.on("message", message => {
   if (message.content === prefix + "image") {
     const embed = new Discord.RichEmbed()
 
-      .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
+      .setTitle(`ئەمە وێنەی سەر ئەم سێرڤەرەیە!`)
       .setAuthor(message.author.username, message.guild.iconrURL)
       .setColor(0x164fe3)
       .setImage(message.guild.iconURL)
@@ -1324,5 +1325,27 @@ client.on("message", msg => {
     if (!msg.channel.guild) return;
     msg.delete();
     msg.reply("```تۆ ناتوانی هێرر لێبدەی .```");
+  }
+});
+// ======== [  nama ] ======  //
+
+console.log("KURD CODING ");
+client.on("message", message => {
+  if (message.content.startsWith(prefix + "bc")) {
+    if (!message.member.hasPermission("ADMINISTRATOR")) return;
+    let args = message.content.split(" ").slice(1);
+    var argresult = args.join(" ");
+    message.guild.members
+      .filter(m => m.presence.status !== "offline")
+      .forEach(m => {
+        m.send(`**__${argresult}\n ${m}__**`);
+      });
+    message.channel.send(
+      `\`${
+        message.guild.members.filter(m => m.presence.status !== "streaming")
+          .size
+      }\` :  **بە سەرکەوتووی نێردرا **✅`
+    );
+    message.delete();
   }
 });
