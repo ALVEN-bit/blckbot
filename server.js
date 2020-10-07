@@ -112,7 +112,7 @@ client.on("message", async message => {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: false
     }); ////////////////mrfix
-    message.channel.send(` **has been locked.**`);
+    message.channel.send(` **بە سەرکەوتوی داخرا.**`);
   }
 });
 ////////////////mrfix
@@ -124,7 +124,7 @@ client.on("message", async message => {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: null
     });
-    message.channel.send(` **has been unlocked.**`);
+    message.channel.send(` **بە سەرکەوتوی کرایەوە**`);
   }
 });
 
@@ -137,17 +137,17 @@ client.on("message", message => {
         member
           .ban("Optional reason for the audit logs")
           .then(() => {
-            message.channel.send(`Successfully banned ${member}`);
+            message.channel.send(`بە سەرکەوتووی باند کرا ${member}`);
           })
           .catch(err => {
             message.channel.send(
-              "I was unable to ban the user. Please check my permmisions."
+              "من ناتوانم بەکارهێنەرەکە باند بکەم . تکایە سەیری پلەبەندی بکە."
             );
 
             console.error(err);
           });
       } else {
-        message.channel.send("You need to mention a user!");
+        message.channel.send("تکایە ئاماژە بە بەکارهێنەرکە بکە!");
       }
     }
   }
@@ -162,11 +162,11 @@ client.on("message", message => {
         member
           .kick("Optional reason for the audit logs")
           .then(() => {
-            message.channel.send(`Successfully kicked ${member}`);
+            message.channel.send(`بە سەرکەوتوی کیک کرا ${member}`);
           })
           .catch(err => {
             message.channel.send(
-              "I was unable to kick the user. Please check my permmisions."
+              "من ناتوانم بەکارهێنەرەکە کیک بکەم .تکایە سەیری پلەبەندی بکە."
             );
 
             console.error(err);
@@ -232,13 +232,17 @@ client.on("message", message => {
     const days = millis / 1000 / 60 / 60 / 24;
     var embed = new Discord.RichEmbed()
       .setAuthor(message.guild.name, message.guild.iconURL)
-      .addField(":id:✽** Server ID:**", `» ${message.guild.id} `, true)
+      .addField(":id:✽** ئایدی سێرڤەر:**", `» ${message.guild.id} `, true)
       .addField(
-        ":calendar:✽** Created On**",
+        ":calendar:✽** درووست کراوە لە**",
         `» ${message.guild.createdAt.toLocaleString()}`,
         true
       )
-      .addField(":crown: ✽**Server Owner**", `**${message.guild.owner}**`, true)
+      .addField(
+        ":crown: ✽**درووستکەری سێرڤەر**",
+        `**${message.guild.owner}**`,
+        true
+      )
       .addField(
         `✽** Members ** [${message.guild.members.size}]`,
         `**${
@@ -248,13 +252,13 @@ client.on("message", message => {
         true
       )
       .addField(
-        ":speech_balloon:✽** Channels **",
+        ":speech_balloon:✽** چەناڵەکان **",
         `» **${message.guild.channels.filter(m => m.type === "text").size}**` +
           " TexT | VoicE  " +
           `**${message.guild.channels.filter(m => m.type === "voice").size}** `,
         true
       )
-      .addField(":earth_africa:✽** Region **", ` ${message.guild.region}`, true)
+      .addField(":earth_africa:✽** کیشوەر **", ` ${message.guild.region}`, true)
       .setImage("")
       .setColor("RANDOM");
     message.channel.sendEmbed(embed);
@@ -313,14 +317,14 @@ client.on("message", message => {
       .setAuthor(message.author.username, message.author.avatarURL)
       .setColor("RANDOM")
       .addField(
-        " Joined Discord At : ",
+        " کاتی دانانی ئەکاونت : ",
         `${moment(heg.createdTimestamp).format(
           "YYYY/M/D HH:mm:ss"
         )} **\n** \`${moment(heg.createdTimestamp).fromNow()}\``,
         true
       )
       .addField(
-        " Joined Server At : ",
+        " هاتیتە سێرڤەر لە : ",
         `${moment(h.joinedAt).format("YYYY/M/D HH:mm:ss")} \n \`${moment(
           h.joinedAt
         ).fromNow()}\``,
@@ -375,7 +379,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].banLimit = num;
       message.channel.send(
-        `**✔️ | Changed \`Anti Ban\` To : ${config[message.guild.id].banLimit} **`
+        `**✔️ | سەرکەوتوو بو : ${config[message.guild.id].banLimit} **`
       );
     }
     if (message.content.startsWith(prefix + "anti kick")) {
@@ -387,7 +391,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].kickLimits = num;
       message.channel.send(
-        `**✔️ | Changed \`Anti Kick\` To : ${config[message.guild.id].kickLimits}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].kickLimits}**`
       );
     }
     if (message.content.startsWith(prefix + "anti roleD")) {
@@ -399,7 +403,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleDelLimit = num;
       message.channel.send(
-        `**✔️ | Changed \`Role Delete\` To : ${config[message.guild.id].roleDelLimit}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].roleDelLimit}**`
       );
     } ////////////////mrfix
     if (message.content.startsWith(prefix + "anti roleC")) {
@@ -411,7 +415,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleCrLimits = num;
       message.channel.send(
-        `**✔️ | Changed \`Role Create\` To : ${config[message.guild.id].roleCrLimits}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].roleCrLimits}**`
       );
     } ////////////////mrfix
     if (message.content.startsWith(prefix + "anti channelD")) {
