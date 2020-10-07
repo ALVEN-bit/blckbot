@@ -40,73 +40,49 @@ client.on("ready", () => {
 });
 
 client.on("ready", () => {
+  console.log(`Online In Servers : ${client.guilds.size} `);
 
-console.log(`Online In Servers : ${client.guilds.size} `);
-
-let statuses = [
-  `2!help | It's time to secure your server`,
-
-  
-
-];
-
-  
-
-  
+  let statuses = [`2!help | It's time to secure your server`];
 
   setInterval(function() {
+    let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
 
-let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
-
-client.user.setActivity(STREAMING, { type: "playing", url: "https://www.twitch.tv/faith"
-
+    client.user.setActivity(STREAMING, {
+      type: "playing",
+      url: "https://www.twitch.tv/faith"
+    });
+  }, 2000);
 });
 
-}, 2000);
+client.on("message", fantic => {
+  if (fantic.content === "2!private") {
+    if (!fantic.member.hasPermission("ADMINISTRATOR"))
+      return fantic.react(":x:");
 
+    fantic.channel.overwritePermissions(fantic.guild.id, {
+      VIEW_CHANNEL: false
+    });
+
+    fantic.react("🔒");
+  }
 });
 
-  client.on('message', fantic => {
+client.on("message", fantic => {
+  if (fantic.content === "2!public") {
+    if (!fantic.member.hasPermission("ADMINISTRATOR"))
+      return fantic.react(":x:");
 
-if (fantic.content === "2!private") {
+    fantic.channel.overwritePermissions(fantic.guild.id, {
+      VIEW_CHANNEL: true
+    });
 
-if (!fantic.member.hasPermission("ADMINISTRATOR")) return fantic.react(":x:")
-
-fantic.channel.overwritePermissions(fantic.guild.id, {
-
-VIEW_CHANNEL: false
-
+    fantic.react("🔓");
+  }
 });
 
-fantic.react("🔒")
-
-}
-
-});
-
-client.on('message', fantic => {
-
-if (fantic.content === "2!public") {
-
-if (!fantic.member.hasPermission("ADMINISTRATOR")) return fantic.react(":x:")
-
-fantic.channel.overwritePermissions(fantic.guild.id, {
-
-VIEW_CHANNEL: true
-
-});
-
-fantic.react("🔓")
-
-}
-
-});
-
- 
-
-client.on('guildCreate', guild => {
-
-client.channels.get("758277308624404511").send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
+client.on("guildCreate", guild => {
+  client.channels.get("758277308624404511")
+    .send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
 
                                         
 
@@ -116,9 +92,8 @@ Server owner: __${guild.owner}__
 
 Server id: __${guild.id}__ 
 
-Server Count: __${guild.memberCount}__**`)
-
-}); 
+Server Count: __${guild.memberCount}__**`);
+});
 
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
@@ -170,63 +145,47 @@ __Public Commends__ 🔻
 });
 // ======== { • lock unlock • }======== //
 
+client.on("message", message => {
+  if (message.content.split(" ")[0].toLowerCase() === "2!clear") {
+    const word = message.content;
+    const number = word.slice(7, word.length);
+    const int = Number(number);
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+      return message.channel.send("❌ | Sorry Your Role Not Support Command");
+    }
+    if (int >= 101) {
+      return message.channel.send("❌ | sorry `100+` massage Not Clear");
+    }
+    if (int == "1000") {
+      return message.channel.send("supply A Number to Delete");
+    } else if (isNaN(int)) {
+      return message.reply("Number");
+    }
+    message.channel.bulkDelete(int).then(() => {
+      return message.channel
+        .send(`Cleared ${int} messages.`)
+        .then(m => m.delete(5000));
+    });
+  }
+});
 
 client.on("message", message => {
-if (message.content.split(" ")[0].toLowerCase() === "2!clear") {
-const word = message.content;
-const number = word.slice(7, word.length);
-const int = Number(number);
-if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-return message.channel.send(
-"❌ | Sorry Your Role Not Support Command"
-);
-}
-if (int >= 101) {
-return message.channel.send(
-"❌ | sorry `100+` massage Not Clear"
-);
-}
-if (int == "1000") {
+  if (!message.guild) return;
 
-return message.channel.send("supply A Number to Delete");
-} else if (isNaN(int)) {
-return message.reply("Number");
-}
-message.channel.bulkDelete(int).then(() => {
-return message.channel
-.send(`Cleared ${int} messages.`)
-.then(m => m.delete(5000));
-});
-}
-});
+  if (message.content === "2!voice") {
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel
+        .join()
 
+        .then(connection => {
+          message.react("☑️");
+        })
 
-client.on('message', message => {
-
-if (!message.guild) return;
-
-if (message.content === '2!voice') {
-
-if (message.member.voiceChannel) {
-
-message.member.voiceChannel.join()
-
-.then(connection => { 
-
-message.react('☑️');
-
-})
-
-.catch(console.log);
-
-} else {
-
-message.reply('❌ | __**please go voice Chanel and Use This Command**__');
-
-}
-
-}
-
+        .catch(console.log);
+    } else {
+      message.reply("❌ | __**please go voice Chanel and Use This Command**__");
+    }
+  }
 });
 
 client.on("message", async message => {
@@ -253,74 +212,54 @@ client.on("message", async message => {
   }
 });
 
-    
+client.on("message", message => {
+  if (message.content.startsWith(`2!ban`)) {
+    if (message.member.hasPermission("BAN_MEMBERS")) {
+      let member = message.mentions.members.first();
 
-client.on('message', message => {
-
-    if(message.content.startsWith(`2!ban`)) {
-
-        if(message.member.hasPermission("BAN_MEMBERS")) {
-
-     let member = message.mentions.members.first();
-
-     if(member) {
-
-         member.ban('Optional reason for the audit logs').then(() => {
-
-             message.channel.send(`Successfully banned ${member}`);
-
-           }).catch(err => {
-
-             message.channel.send('I was unable to ban the user. Please check my permmisions.');
-
-             console.error(err);
-
-           });
-
-     } else {
-
-         message.channel.send("You need to mention a user!")
-
-     }
-
- }
-
-    }
-
- });
-
-client.on('message', message => {
-
-   if(message.content.startsWith(`2!kick`)) {
-
-       if(message.member.hasPermission("KICK_MEMBERS")) {
-
-    let member = message.mentions.members.first();
-
-    if(member) {
-
-        member.kick('Optional reason for the audit logs').then(() => {
-
-            message.channel.send(`Successfully kicked ${member}`);
-
-          }).catch(err => {
-
-            message.channel.send('I was unable to kick the user. Please check my permmisions.');
+      if (member) {
+        member
+          .ban("Optional reason for the audit logs")
+          .then(() => {
+            message.channel.send(`Successfully banned ${member}`);
+          })
+          .catch(err => {
+            message.channel.send(
+              "I was unable to ban the user. Please check my permmisions."
+            );
 
             console.error(err);
-
           });
-
-    } else {
-
-        message.channel.send("You need to mention a user!")
-
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
     }
+  }
+});
 
-}
+client.on("message", message => {
+  if (message.content.startsWith(`2!kick`)) {
+    if (message.member.hasPermission("KICK_MEMBERS")) {
+      let member = message.mentions.members.first();
 
-   }
+      if (member) {
+        member
+          .kick("Optional reason for the audit logs")
+          .then(() => {
+            message.channel.send(`Successfully kicked ${member}`);
+          })
+          .catch(err => {
+            message.channel.send(
+              "I was unable to kick the user. Please check my permmisions."
+            );
 
+            console.error(err);
+          });
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
+    }
+  }
 });
 // ======== { • invite • }======== //
 client.on("message", message => {
@@ -1182,7 +1121,7 @@ const antiSpam = new AntiSpam({
   kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-  warnMessage: "{@user}, please stop spamming .", // Message that will be sent in chat upon warning a user.
+  warnMessage: "{@user},  .", // Message that will be sent in chat upon warning a user.
   kickMessage: "**{user_tag}**, kicked for spam .", // Message that will be sent in chat upon kicking a user.
   banMessage: "**{user_tag}**, banned for spam .", // Message that will be sent in chat upon banning a user.
   maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
@@ -1201,7 +1140,7 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MANAGE_EMOJIS")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send link .```");
+    msg.reply("```ریکلام مەکە خۆم تورەم```");
   }
 });
 // ======== { • anti everyone • }======== //
@@ -1211,7 +1150,7 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MENTION_EVERYONE")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send everyone .```");
+    msg.reply("```عەیبە بۆ ئێڤریوەن لێدەدەی```");
   }
 });
 // ======== { • anti here • }======== //
@@ -1221,6 +1160,6 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MENTION_EVERYONE")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send here .```");
+    msg.reply("```برا بۆ هێرر لێ دەدەی```");
   }
 });
