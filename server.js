@@ -244,7 +244,7 @@ client.on("message", message => {
         true
       )
       .addField(
-        `✽** Members ** [${message.guild.members.size}]`,
+        `✽** میمبەرەکان ** [${message.guild.members.size}]`,
         `**${
           message.guild.members.filter(c => c.presence.status !== "offline")
             .size
@@ -286,7 +286,7 @@ client.on("message", message => {
       .setDescription(
         `Found ${
           message.guild.members.filter(m => m.user.bot).size
-        } bots in this server \n ${botssize.join("\n")}`
+        } بووت دۆزرایەوە لە سێرڤەر \n ${botssize.join("\n")}`
       )
       .setFooter(`${client.user.username}`, client.user.avatarURL)
       .setTimestamp();
@@ -379,7 +379,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].banLimit = num;
       message.channel.send(
-        `**✔️ | سەرکەوتوو بو : ${config[message.guild.id].banLimit} **`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].banLimit} **`
       );
     }
     if (message.content.startsWith(prefix + "anti kick")) {
@@ -428,7 +428,7 @@ client.on("message", message => {
       config[message.guild.id].chaDelLimit = num;
       message.channel.send(
         ////////////////mrfix
-        `**✔️ | Changed \`Channel Delete\` To : ${config[message.guild.id].chaDelLimit}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].chaDelLimit}**`
       );
     }
     if (message.content.startsWith(prefix + "anti channelC")) {
@@ -440,7 +440,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].chaCrLimit = num;
       message.channel.send(
-        `**✔️ | Changed \`Channel Create\` To : ${config[message.guild.id].chaCrLimit}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].chaCrLimit}**`
       );
     } ////////////////mrfix
     if (message.content.startsWith(prefix + "anti time")) {
@@ -452,7 +452,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].time = num;
       message.channel.send(
-        `**✔️ | Changed \`Time\` To : ${config[message.guild.id].time}**`
+        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].time}**`
       );
     }
   }
@@ -989,9 +989,9 @@ const antiSpam = new AntiSpam({
   kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-  warnMessage: "{@user}, please stop spamming .", // Message that will be sent in chat upon warning a user.
-  kickMessage: "**{user_tag}**, kicked for spam .", // Message that will be sent in chat upon kicking a user.
-  banMessage: "**{user_tag}**, banned for spam .", // Message that will be sent in chat upon banning a user.
+  warnMessage: "{@user}, تکایە بۆستە لە چات کردن .", // Message that will be sent in chat upon warning a user.
+  kickMessage: "**{user_tag}**, لەگەڵ تۆمە کیک دەکرێی .", // Message that will be sent in chat upon kicking a user.
+  banMessage: "**{user_tag}**, برۆ باند کرای خێری لێ ببینی .", // Message that will be sent in chat upon banning a user.
   maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
   maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
   maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
