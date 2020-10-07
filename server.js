@@ -306,7 +306,7 @@ client.on("message", message => {
 
       .setTimestamp()
 
-      .setFooter(`Requested By | ${message.author.username}`)
+      .setFooter(`Requested By | ${message.username}`)
 
       .setImage("")
 
@@ -448,10 +448,7 @@ client.on("message", message => {
         ).fromNow()}\``,
         true
       )
-      .setFooter(
-        `${message.author.username}`,
-        "https://cdn.discordapp.com/attachments/622874137685262359/755868593455104090/20200916_221122.gif"
-      )
+      .setFooter(`${message.author.username}`, "")
       .setThumbnail(heg.avatarURL);
     message.channel.send(id);
   }
