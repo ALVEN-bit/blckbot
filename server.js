@@ -40,36 +40,24 @@ client.on("ready", () => {
 });
 
 client.on("ready", () => {
+  console.log(`Online In Servers : ${client.guilds.size} `);
 
-console.log(`Online In Servers : ${client.guilds.size} `);
+  let statuses = [
+    `2!help | Best Security`,
 
-let statuses = [
-
- `2!help | Best Security`,
-
-  `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `,
-
-  
-
-];
-
-  
-
-  
+    `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
+  ];
 
   setInterval(function() {
+    let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
 
-let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
-
-client.user.setActivity(STREAMING, { type: "playing", url: "https://www.twitch.tv/faith"
-
+    client.user.setActivity(STREAMING, {
+      type: "playing",
+      url: "https://www.twitch.tv/faith"
+    });
+  }, 2000);
 });
 
-}, 2000);
-
-});
-
-   
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
@@ -140,74 +128,54 @@ client.on("message", async message => {
   }
 });
 
-    
+client.on("message", message => {
+  if (message.content.startsWith(`2!ban`)) {
+    if (message.member.hasPermission("BAN_MEMBERS")) {
+      let member = message.mentions.members.first();
 
-client.on('message', message => {
-
-    if(message.content.startsWith(`2!ban`)) {
-
-        if(message.member.hasPermission("BAN_MEMBERS")) {
-
-     let member = message.mentions.members.first();
-
-     if(member) {
-
-         member.ban('Optional reason for the audit logs').then(() => {
-
-             message.channel.send(`Successfully banned ${member}`);
-
-           }).catch(err => {
-
-             message.channel.send('I was unable to ban the user. Please check my permmisions.');
-
-             console.error(err);
-
-           });
-
-     } else {
-
-         message.channel.send("You need to mention a user!")
-
-     }
-
- }
-
-    }
-
- });
-
-client.on('message', message => {
-
-   if(message.content.startsWith(`2!kick`)) {
-
-       if(message.member.hasPermission("KICK_MEMBERS")) {
-
-    let member = message.mentions.members.first();
-
-    if(member) {
-
-        member.kick('Optional reason for the audit logs').then(() => {
-
-            message.channel.send(`Successfully kicked ${member}`);
-
-          }).catch(err => {
-
-            message.channel.send('I was unable to kick the user. Please check my permmisions.');
+      if (member) {
+        member
+          .ban("Optional reason for the audit logs")
+          .then(() => {
+            message.channel.send(`Successfully banned ${member}`);
+          })
+          .catch(err => {
+            message.channel.send(
+              "I was unable to ban the user. Please check my permmisions."
+            );
 
             console.error(err);
-
           });
-
-    } else {
-
-        message.channel.send("You need to mention a user!")
-
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
     }
+  }
+});
 
-}
+client.on("message", message => {
+  if (message.content.startsWith(`2!kick`)) {
+    if (message.member.hasPermission("KICK_MEMBERS")) {
+      let member = message.mentions.members.first();
 
-   }
+      if (member) {
+        member
+          .kick("Optional reason for the audit logs")
+          .then(() => {
+            message.channel.send(`Successfully kicked ${member}`);
+          })
+          .catch(err => {
+            message.channel.send(
+              "I was unable to kick the user. Please check my permmisions."
+            );
 
+            console.error(err);
+          });
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
+    }
+  }
 });
 // ======== { • invite • }======== //
 client.on("message", message => {
@@ -398,7 +366,7 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "anti")) {
     if (message.author.id !== message.guild.owner.user.id)
       return message.channel.send(
-        "**❌ | Only `OwnerShip` Can Use This Command .**"
+        "**❌ | دەتوانێ ئەمکارە بکات`OwnerShip`تەنها .**"
       );
     if (message.content.startsWith(prefix + "anti ban")) {
       if (!num)
@@ -406,7 +374,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         );
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].banLimit = num;
       message.channel.send(
         `**✔️ | Changed \`Anti Ban\` To : ${config[message.guild.id].banLimit} **`
@@ -418,7 +386,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         );
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].kickLimits = num;
       message.channel.send(
         `**✔️ | Changed \`Anti Kick\` To : ${config[message.guild.id].kickLimits}**`
@@ -430,7 +398,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         );
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleDelLimit = num;
       message.channel.send(
         `**✔️ | Changed \`Role Delete\` To : ${config[message.guild.id].roleDelLimit}**`
@@ -442,7 +410,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         ); ////////////////mrfix
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleCrLimits = num;
       message.channel.send(
         `**✔️ | Changed \`Role Create\` To : ${config[message.guild.id].roleCrLimits}**`
@@ -454,7 +422,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         ); ////////////////mrfix
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].chaDelLimit = num;
       message.channel.send(
         ////////////////mrfix
@@ -467,7 +435,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         ); ////////////////mrfix
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].chaCrLimit = num;
       message.channel.send(
         `**✔️ | Changed \`Channel Create\` To : ${config[message.guild.id].chaCrLimit}**`
@@ -479,7 +447,7 @@ client.on("message", message => {
           "**❌ | Type A `Number` After Commands .**"
         );
       if (isNaN(num))
-        return message.channel.send("**❌ | Only Type `Number` .**");
+        return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].time = num;
       message.channel.send(
         `**✔️ | Changed \`Time\` To : ${config[message.guild.id].time}**`
@@ -1088,7 +1056,7 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MANAGE_EMOJIS")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send link .```");
+    msg.reply("```ریکلام مەکە خۆم تورەم .```");
   }
 });
 // ======== { • anti everyone • }======== //
@@ -1098,7 +1066,7 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MENTION_EVERYONE")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send everyone .```");
+    msg.reply("```کێ بوو ئێڤریوەنی لێدا .```");
   }
 });
 // ======== { • anti here • }======== //
@@ -1108,6 +1076,6 @@ client.on("message", msg => {
     if (msg.member.hasPermission("MENTION_EVERYONE")) return;
     if (!msg.channel.guild) return;
     msg.delete();
-    msg.reply("```You cant send here .```");
+    msg.reply("```تۆ ناتوانی هێرر لێبدەی .```");
   }
 });
