@@ -102,7 +102,13 @@ client.on("ready", () => {
         "__**🔰 | نــاوی ســێــرڤــەر : **__",
         `${member.guild.name}`,
         true
-      );
+      )
+      .setImage(
+        "https://media.discordapp.net/attachments/678300317745414165/679375773832052737/image0.gif"
+      )
+      .setTimestamp();
+
+    channel.sendEmbed(embed);
   });
   client.on("guildMemberRemove", member => {
     let channel = member.guild.channels.find("name", "┃left");
