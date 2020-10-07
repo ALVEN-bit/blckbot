@@ -545,6 +545,55 @@ client.on("message", message => {
     }
   }
 });
+
+//  ========  (  anti bot   )   ========  //
+
+var Enmap = require("enmap");
+client.antibots = new Enmap({ name: "anti bot" });
+var antibots = client.antibots;
+var julian = client;
+julian.on("message", codes => {
+  var prefix = "-";
+  if (codes.content == prefix + "anti bots on") {
+    if (
+      codes.author.bot ||
+      !codes.channel.guild ||
+      codes.author.id != codes.guild.ownerID
+    )
+      return;
+    antibots.set(`${codes.guild.id}`, {
+      onoff: "On"
+    });
+
+    codes.channel.send(
+      " ✅ **بەسەرکەوتووی کارا کرا**   <a:x2:669825119492767745>"
+    );
+  }
+  if (codes.content == prefix + "anti bots off") {
+    if (
+      codes.author.bot ||
+      !codes.channel.guild ||
+      codes.author.id != codes.guild.ownerID
+    )
+      return;
+    antibots.set(`${codes.guild.id}`, {
+      onoff: "Off"
+    });
+    codes.channel.send(
+      " ✅ **بەسەرکەوتووی کارا کرا**  <a:x2:669825119492767745>"
+    );
+  }
+});
+
+julian.on("guildMemberAdd", member => {
+  if (!antibots.get(`${member.guild.id}`)) {
+    antibots.set(`${member.guild.id}`, {
+      onoff: "Off"
+    });
+  }
+  if (antibots.get(`${member.guild.id}`).onoff == "Off") return;
+  if (member.user.bot) return member.kick();
+});
 // ======== { • security • }======== //
 const tpoints = {};
 const vpoints = {};
