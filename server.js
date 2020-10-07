@@ -1121,9 +1121,9 @@ const antiSpam = new AntiSpam({
   kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
   maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-  warnMessage: "{@user}, تکایە بۆستە لە نوسین .", // Message that will be sent in chat upon warning a user.
-  kickMessage: "**{user_tag}**, کیک دەکرێی .", // Message that will be sent in chat upon kicking a user.
-  banMessage: "**{user_tag}**, باند دەکرێی .", // Message that will be sent in chat upon banning a user.
+  warnMessage: "{@user}, ban for ban .", // Message that will be sent in chat upon warning a user.
+  kickMessage: "**{user_tag}**,  .", // Message that will be sent in chat upon kicking a user.
+  banMessage: "**{user_tag}**, .", // Message that will be sent in chat upon banning a user.
   maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
   maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
   maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
