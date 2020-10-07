@@ -417,6 +417,68 @@ client.on("message", message => {
     message.channel.send(embed);
   }
 });
+if (command === "1!say") {
+    if (!message.channel.guild)
+      return message.channel
+        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
+        .then(m => m.delete(5000));
+    if (!message.member.hasPermission("SEND_MESSAGES"))
+      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە ADMINISTRATOR");
+    message.delete();
+    message.channel.sendMessage(args.join("*e"));
+  }
+
+  if ("1!say") {
+    /////دەتوانی ئەو پێرڤێکسەی بگۆڕیت
+    if (!message.channel.guild)
+      return message.channel
+        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
+        .then(m => m.delete(5000));
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە MANAGE_MESSAGES");
+    let say = new Discord.RichEmbed()
+      .setDescription(args.join(" "))
+      .setColor(0x23b2d6)
+  
+// ======== { • say • }======== //
+client.on("message", message => {
+  if (message.author.bot) return;
+
+  if (!message.content.startsWith("1!say")) return;
+
+  let command = message.content.split("1!say")[0];
+  command = command.slice("");
+
+  let args = message.content.split("1!say").slice(1);
+    if (command === "1!say") {
+    if (!message.channel.guild)
+      return message.channel
+        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
+        .then(m => m.delete(5000));
+    if (!message.member.hasPermission("SEND_MESSAGES"))
+      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە ADMINISTRATOR");
+    message.delete();
+    message.channel.sendMessage(args.join("*e"));
+  }
+
+  if ("1!say") {
+    /////دەتوانی ئەو پێرڤێکسەی بگۆڕیت
+    if (!message.channel.guild)
+      return message.channel
+        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
+        .then(m => m.delete(5000));
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە MANAGE_MESSAGES");
+    let say = new Discord.RichEmbed()
+      .setDescription(args.join(" "))
+      .setColor(0x23b2d6)
+      .setImage(
+        "https://cdn.discordapp.com/attachments/728333268918861845/729754125847232552/image0-2.gif"
+      );
+    message.channel.sendEmbed(say);
+    message.delete();
+  }
+});
 // ======== { • user • }======== //
 client.on("message", message => {
   if (message.content.startsWith(prefix + "user")) {
