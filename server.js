@@ -1327,25 +1327,76 @@ client.on("message", msg => {
     msg.reply("```تۆ ناتوانی هێرر لێبدەی .```");
   }
 });
-// ======== [  nama ] ======  //
-
-console.log("KURD CODING ");
+// ======== [  codi offline ] ======  //
+client.on("typingStart", (ch, user) => {
+  if (user.presence.status === "offline") {
+    ch.send(
+      `${user}(:😜:😠:   دەستەکەو کەشف بوو ئەوە خۆت ئۆفلاین ئەکەی خێرا خۆت ئۆنلاین کە`
+    ).then(msg => {
+      msg.delete(10000);
+    });
+  }
+});
+//  =========  [ nama ]   ========  //
 client.on("message", message => {
-  if (message.content.startsWith(prefix + "bc")) {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return;
-    let args = message.content.split(" ").slice(1);
-    var argresult = args.join(" ");
-    message.guild.members
-      .filter(m => m.presence.status !== "offline")
-      .forEach(m => {
-        m.send(`**__${argresult}\n ${m}__**`);
+  if (!message.channel.guild) return;
+  if (message.content.startsWith("2!bc")) {
+    if (!message.channel.guild)
+      return message.channel
+        .send("**ئەم فەرمانە بەس بۆ سێرڤەرە**")
+        .then(m => m.delete(5000));
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel.send("ببورە تۆ ڕۆڵی بەرزت نیە");
+    let args = message.content
+      .split(" ")
+      .join(" ")
+      .slice("2 + prifix.length");
+    let copy = "Home For Developers";
+    let request = `Requested By ${message.author.username}`;
+    if (!args) return message.reply("**✅**");
+    message.channel
+      .send(`**__تۆ دڵنیای دەتەوێ نامەکە بنێری؟__** \` ${args}\``)
+      .then(msg => {
+        msg
+          .react("✅")
+          .then(() => msg.react("❌"))
+          .then(() => msg.react("✅"));
+
+        let reaction1Filter = (reaction, user) =>
+          reaction.emoji.name === "✅" && user.id === message.author.id;
+        let reaction2Filter = (reaction, user) =>
+          reaction.emoji.name === "❌" && user.id === message.author.id;
+        let reaction1 = msg.createReactionCollector(reaction1Filter, {
+          time: 12000
+        });
+        let reaction2 = msg.createReactionCollector(reaction2Filter, {
+          time: 12000
+        });
+        reaction1.on("collect", r => {
+          message.channel
+            .send(`☑ |   ${message.guild.members.size}  بەسەرکەوتوویی نێردرا `)
+            .then(m => m.delete(5000));
+          message.guild.members.forEach(m => {
+            var bc = new Discord.RichEmbed()
+              .setColor("RANDOM")
+              .setTitle("WARNING :mega: ")
+              .addField(".", args)
+              .setImage(
+                "https://cdn.discordapp.com/attachments/703243461079597138/708070790079184957/image0.gif"
+              )
+              .setThumbnail("")
+              .setFooter(copy, client.user.avatarURL);
+            m.send({ embed: bc });
+            msg.delete();
+          });
+        });
+
+        reaction2.on("collect", r => {
+          message.channel
+            .send(`**Broadcast Canceled.**`)
+            .then(m => m.delete(5000));
+          msg.delete();
+        });
       });
-    message.channel.send(
-      `\`${
-        message.guild.members.filter(m => m.presence.status !== "streaming")
-          .size
-      }\` :  **بە سەرکەوتووی نێردرا **✅`
-    );
-    message.delete();
   }
 });
