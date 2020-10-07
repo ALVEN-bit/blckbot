@@ -36,77 +36,115 @@ var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
   //  ========(  muti )==========   //
-  
-client.on("message", message => {
-  if (message.content.startsWith(`2!mute`)) {
-    if (message.member.hasPermission("ADMINISTRATOR")) {
-      let role = message.guild.roles.find(r => r.name === "Muted");
-      let member = message.mentions.members.first();
-      if (member) {
-        member.removeRoles(member.roles);
-        member.addRole(role).catch(console.error);
-        message.channel.send(`${member} has been muted!`);
-      } else {
-        message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
-      }
-    } else {
-      message.channel.send("You are not a high enough rank!");
-    }
-  }
-});
+
   client.on("message", message => {
-  if (message.content.startsWith(`2!unmute`)) {
-    if (message.member.hasPermission("ADMINISTRATOR")) {
-      let member = message.mentions.members.first();
-      let role = message.guild.roles.find(r => r.name === "Muted");
-      if (member) {
-        member.removeRole(role).catch(console.error);
-        message.channel.send(`${member} has been unmuted!`);
+    if (message.content.startsWith(`2!mute`)) {
+      if (message.member.hasPermission("ADMINISTRATOR")) {
+        let role = message.guild.roles.find(r => r.name === "Muted");
+        let member = message.mentions.members.first();
+        if (member) {
+          member.removeRoles(member.roles);
+          member.addRole(role).catch(console.error);
+          message.channel.send(`${member} has been muted!`);
+        } else {
+          message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
+        }
       } else {
-        message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
+        message.channel.send("ببورە تۆ ڕۆڵت نیە بەتەمای چی");
       }
-    } else {
-      message.channel.send("You are not a high enough rank.");
     }
-  }
-});
-  
+  });
+  client.on("message", message => {
+    if (message.content.startsWith(`2!unmute`)) {
+      if (message.member.hasPermission("ADMINISTRATOR")) {
+        let member = message.mentions.members.first();
+        let role = message.guild.roles.find(r => r.name === "Muted");
+        if (member) {
+          member.removeRole(role).catch(console.error);
+          message.channel.send(`${member} has been unmuted!`);
+        } else {
+          message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
+        }
+      } else {
+        message.channel.send("ببورە تۆ ڕۆڵت نیە بەتەمای چی");
+      }
+    }
+  });
+
   //   ===============[ WELCOME - LEFT ]=============  //
-  
-  /
-client.on("guildMemberAdd", member => {
-  let channel = member.guild.channels.find("name", "┃✨┃welcome");
-  let memberavatar = member.user.avatarURL;
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setThumbnail(memberavatar)
-    .addField(
-      ":bust_in_silhouette: | Welcome!",
-      `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
-    )
-    .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
-    .addField(
-      "__**:id: | ئــەکــاونــتــت :**__",
-      "**[" + `${member.id}` + "]**"
-    )
-    .addField(
-      "__**:family_mwgb: | تــۆ کــەســی ژمــارە : **__ ",
-      `${member.guild.memberCount}`
-    )
-    .addField(
-      "__**📍 | نــاوی مــیــمــبــەر:**__",
-      `<@` + `${member.id}` + `>`,
-      true
-    )
-    .addField(
-      "__**🔰 | نــاوی ســێــرڤــەر : **__",
-      `${member.guild.name}`,
-      true
-    )
-/////
-  
-  
+
+  client.on("guildMemberAdd", member => {
+    let channel = member.guild.channels.find("name", "┃welcome");
+    let memberavatar = member.user.avatarURL;
+    if (!channel) return;
+    let embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setThumbnail(memberavatar)
+      .addField(
+        ":bust_in_silhouette: | Welcome!",
+        `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
+      )
+      .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
+      .addField(
+        "__**:id: | ئــەکــاونــتــت :**__",
+        "**[" + `${member.id}` + "]**"
+      )
+      .addField(
+        "__**:family_mwgb: | تــۆ کــەســی ژمــارە : **__ ",
+        `${member.guild.memberCount}`
+      )
+      .addField(
+        "__**📍 | نــاوی مــیــمــبــەر:**__",
+        `<@` + `${member.id}` + `>`,
+        true
+      )
+      .addField(
+        "__**🔰 | نــاوی ســێــرڤــەر : **__",
+        `${member.guild.name}`,
+        true
+      );
+  });
+  client.on("guildMemberRemove", member => {
+    let channel = member.guild.channels.find("name", "┃left");
+    let memberavatar = member.user.avatarURL;
+    if (!channel) return;
+    let embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setThumbnail(memberavatar)
+      .addField("نــاو:", `${member}`)
+      .addField("رۆیــشــت لــە ســێــرڤــەر", ";(")
+      .addField(
+        "ســێــرڤــەر مــاوە",
+        `${member.guild.memberCount}` + " مــێــمــبــەر"
+      )
+      .setImage(
+        "https://cdn.discordapp.com/attachments/755636694035857438/758974172658663424/20200923_140354.gif"
+      )
+      .setFooter(`${member.guild.name}`)
+
+      .setTimestamp(695838737392861254);
+
+    channel.sendEmbed(embed);
+  });
+
+  //  =================(  invit  )===================  //
+
+  client.on("guildMemberAdd", member => {
+    member.guild.fetchInvites().then(guildInvites => {
+      const gamer = invites[member.guild.id];
+      invites[member.guild.id] = guildInvites;
+      const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
+      const inviter = client.users.get(invite.inviter.id);
+      const welcome = member.guild.channels.find(
+        channel => channel.name === "┃invite" ///ناوی چەنال لێرە دانێ
+      );
+      welcome.send(
+        `<@${member.id}> **joined:** Invite By <@${inviter.id}> (${invite.uses} invites)`
+      );
+    });
+  });
+  //  =========  [  striming ]  ========  //
+
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
@@ -153,6 +191,12 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!kick
 > 2!mute
 > 2!unmute
+
+__ژورەکان بەم شێوەیە لێبکە__🔻
+
+> ┃welcome
+> ┃left
+> ┃invite
 
 __کۆماندی ئاسای__ 🔻
 
