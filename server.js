@@ -172,7 +172,7 @@ client.on("message", message => {
             console.error(err);
           });
       } else {
-        message.channel.send("You need to mention a user!");
+        message.channel.send("تکایە ئاماژە بە بەکارهێنەرەکە بکە!");
       }
     }
   }
@@ -182,11 +182,9 @@ client.on("message", message => {
   if (message.content.startsWith(`${prefix}invite`)) {
     var embed = new Discord.RichEmbed()
 
-      .setTitle("✨ | Click Here To Add BlackStorm Security ")
+      .setTitle("__**بۆ راکێشانی بووتەکە کلیک لەم تێکستە شینە بکە**__")
 
-      .setURL(
-        "https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot"
-      )
+      .setURL("")
 
       .setTimestamp()
 
@@ -208,15 +206,15 @@ client.on("message", message => {
       .setAuthor(client.user.username, client.user.avatarURL)
       .setColor("RANDOM")
       .addField(
-        "**Bot Ping** : ",
-        `» ${Date.now() - message.createdTimestamp}` + " ms",
+        "**بوت پینگ** : ",
+        `» ${Date.now() - message.createdTimestamp}` + "خێرای خەت",
         true
       )
-      .addField("**Servers** :  ", `» ${client.guilds.size}`, true)
-      .addField("**Channels** : ", `» ${client.channels.size} `, true)
-      .addField("**Users** : ", `» ${client.users.size} `, true)
-      .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
-      .addField("**Bot Owner** :  ", `» BlackStorm`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**سێرڤەر** :  ", `» ${client.guilds.size}`, true)
+      .addField("**چەناڵ** : ", `» ${client.channels.size} `, true)
+      .addField("**میمبەر** : ", `» ${client.users.size} `, true)
+      .addField("**ناوی بوت** :  ", `» ${client.user.tag} `, true)
+      .addField("**دروستکەر بوت** :  ", `» <@744471904538067065>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
@@ -938,58 +936,8 @@ client.on("guildMemberRemove", async member => {
 });
 // ======== { • anti bots • }======== //
 
-plet antibots = JSON.parse(fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "antibots on")) {
-    if (!message.channel.guild) return;
-    if (!message.member.hasPermission("Ownership")) return;
-    antibots[message.guild.id] = {
-      onoff: "On"
-    };
-    message.channel.send(`**➕ | The antibots is \`ON\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
-      if (err)
-        console.error(err).catch(err => {
-          console.error(err);
-        });
-    });
-  }
-});
-////////////////mrfix////////////////mrfix
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "antibots off")) {
-    if (!message.channel.guild) return;
-    if (!message.member.hasPermission("Ownership")) return;
-    antibots[message.guild.id] = {
-      onoff: "Off"
-    };
-    message.channel.send(`**➖ | The antibots is \`OFF\`.**`);
-    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
-      if (err)
-        console.error(err).catch(err => {
-          console.error(err);
-        });
-    });
-  }
-});
-////////////////mrfix
-client.on("guildMemberAdd", member => {
-  if (!antibots[member.guild.id])
-    antibots[member.guild.id] = {
-      onoff: "on"
-    };
-  if (antibots[member.guild.id].onoff === "Off") return;
-  if (member.user.bot) return member.kick();
-});
-////////////////mrfix
-fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
-  if (err)
-    console.error(err).catch(err => {
-      console.error(err);
-    });
-}); ////////////////mrfix
 // ======== { • settings • }======== //
-////////////////mrfix
+
 client.on("message", message => {
   if (message.content === prefix + "settings") {
     if (!message.member.hasPermission("Ownership"))
