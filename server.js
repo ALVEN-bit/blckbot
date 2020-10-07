@@ -36,9 +36,9 @@ var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
   //  ========(  muti )==========   //
-  //
+  
 client.on("message", message => {
-  if (message.content.startsWith(`1!mute`)) {
+  if (message.content.startsWith(`2!mute`)) {
     if (message.member.hasPermission("ADMINISTRATOR")) {
       let role = message.guild.roles.find(r => r.name === "Muted");
       let member = message.mentions.members.first();
@@ -47,13 +47,65 @@ client.on("message", message => {
         member.addRole(role).catch(console.error);
         message.channel.send(`${member} has been muted!`);
       } else {
-        message.channel.send("You need to mention a user!");
+        message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
       }
     } else {
       message.channel.send("You are not a high enough rank!");
     }
   }
 });
+  client.on("message", message => {
+  if (message.content.startsWith(`2!unmute`)) {
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      let member = message.mentions.members.first();
+      let role = message.guild.roles.find(r => r.name === "Muted");
+      if (member) {
+        member.removeRole(role).catch(console.error);
+        message.channel.send(`${member} has been unmuted!`);
+      } else {
+        message.channel.send("تکایە ناوی بەکارهێنەرەکە بنووسە");
+      }
+    } else {
+      message.channel.send("You are not a high enough rank.");
+    }
+  }
+});
+  
+  //   ===============[ WELCOME - LEFT ]=============  //
+  
+  /
+client.on("guildMemberAdd", member => {
+  let channel = member.guild.channels.find("name", "┃✨┃welcome");
+  let memberavatar = member.user.avatarURL;
+  if (!channel) return;
+  let embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setThumbnail(memberavatar)
+    .addField(
+      ":bust_in_silhouette: | Welcome!",
+      `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
+    )
+    .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
+    .addField(
+      "__**:id: | ئــەکــاونــتــت :**__",
+      "**[" + `${member.id}` + "]**"
+    )
+    .addField(
+      "__**:family_mwgb: | تــۆ کــەســی ژمــارە : **__ ",
+      `${member.guild.memberCount}`
+    )
+    .addField(
+      "__**📍 | نــاوی مــیــمــبــەر:**__",
+      `<@` + `${member.id}` + `>`,
+      true
+    )
+    .addField(
+      "__**🔰 | نــاوی ســێــرڤــەر : **__",
+      `${member.guild.name}`,
+      true
+    )
+/////
+  
   
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -62,7 +114,7 @@ client.on("ready", () => {
   console.log(`Online In Servers : ${client.guilds.size} `);
 
   let statuses = [
-    `2!help | Best Security`,
+    `2!help | KURD CODING`,
 
     `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
   ];
@@ -80,7 +132,8 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = ` __OwnerShip Commands__ 🔻
+    let Dashboard = `
+__کۆماندەکانی ئۆنەر شیپ__ 🔻
 
 > 2!anti ban [number]
 > 2!anti kick [number]
@@ -92,14 +145,16 @@ client.on("message", m => {
 > 2!antibots [on / off]
 > 2!settings
 
-__Admin Commands__ 🔻
+__کۆماندەکانی ئەدمین__ 🔻
 
 > 2!lock
 > 2!unlock
 > 2!ban
 > 2!kick
+> 2!mute
+> 2!unmute
 
-__Public Commends__ 🔻
+__کۆماندی ئاسای__ 🔻
 
 > 2!bots
 > 2!invite
@@ -110,7 +165,7 @@ __Public Commends__ 🔻
 > Best Discord __AntiSpam__
 > Best Discord __AntiShare Everyone & Here & Link .__`;
     var addserver = `https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot`;
-    var SUPPORT = `https://discord.gg/GqkgpGB`;
+    var SUPPORT = `https://discord.gg/vDEfjk4`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
