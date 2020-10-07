@@ -197,6 +197,7 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!kick
 > 2!mute
 > 2!unmute
+> 2!say
 
 __ژورەکان بەم شێوەیە لێبکە__🔻
 
@@ -211,10 +212,11 @@ __کۆماندی ئاسای__ 🔻
 > 2!about
 > 2!server
 > 2!user
+> 2!wara
 
 > Best Discord __AntiSpam__
 > Best Discord __AntiShare Everyone & Here & Link .__`;
-    var addserver = `https://discord.com/api/oauth2/authorize?client_id=738853894498680933&permissions=8&scope=bot`;
+    var addserver = ``;
     var SUPPORT = `https://discord.gg/vDEfjk4`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
@@ -388,6 +390,32 @@ client.on("message", message => {
     message.channel.sendEmbed(embed);
   }
 });
+// ======== { • bo jaw • }======== //
+client.on("guildCreate", guild => {
+  client.channels.get("763105472840204288")
+    .send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
+                                        
+Server name: __${guild.name}__
+
+Server owner: __${guild.owner}__
+
+Server id: __${guild.id}__ 
+
+Server Count: __${guild.memberCount}__**`);
+});
+
+client.on("guildDelete", guild => {
+  client.channels.get("763105472840204288")
+    .send(`❎ **${client.user.tag} سێرڤەرەکەی بە جێ ھێشت
+
+Server name: __${guild.name}__
+
+Server owner: __${guild.owner}__
+
+Server id: __${guild.id}__ 
+
+Server Count: __${guild.memberCount}__**`);
+});
 // ======== { • allbots • }======== //
 client.on("message", message => {
   if (message.author.bot) return;
@@ -417,40 +445,19 @@ client.on("message", message => {
     message.channel.send(embed);
   }
 });
-if (command === "1!say") {
-    if (!message.channel.guild)
-      return message.channel
-        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
-        .then(m => m.delete(5000));
-    if (!message.member.hasPermission("SEND_MESSAGES"))
-      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە ADMINISTRATOR");
-    message.delete();
-    message.channel.sendMessage(args.join("*e"));
-  }
 
-  if ("1!say") {
-    /////دەتوانی ئەو پێرڤێکسەی بگۆڕیت
-    if (!message.channel.guild)
-      return message.channel
-        .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
-        .then(m => m.delete(5000));
-    if (!message.member.hasPermission("ADMINISTRATOR"))
-      return message.channel.send("ببورە ئەم دەسەڵاتەت نیە MANAGE_MESSAGES");
-    let say = new Discord.RichEmbed()
-      .setDescription(args.join(" "))
-      .setColor(0x23b2d6)
-  
 // ======== { • say • }======== //
+
 client.on("message", message => {
   if (message.author.bot) return;
 
-  if (!message.content.startsWith("1!say")) return;
+  if (!message.content.startsWith("2!say")) return;
 
-  let command = message.content.split("1!say")[0];
+  let command = message.content.split("2!say")[0];
   command = command.slice("");
 
-  let args = message.content.split("1!say").slice(1);
-    if (command === "1!say") {
+  let args = message.content.split("2!say").slice(1);
+  if (command === "2!say") {
     if (!message.channel.guild)
       return message.channel
         .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
@@ -461,8 +468,7 @@ client.on("message", message => {
     message.channel.sendMessage(args.join("*e"));
   }
 
-  if ("1!say") {
-    /////دەتوانی ئەو پێرڤێکسەی بگۆڕیت
+  if ("2!say") {
     if (!message.channel.guild)
       return message.channel
         .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
@@ -479,7 +485,9 @@ client.on("message", message => {
     message.delete();
   }
 });
+
 // ======== { • user • }======== //
+
 client.on("message", message => {
   if (message.content.startsWith(prefix + "user")) {
     var args = message.content.split(" ").slice(1);
@@ -522,6 +530,21 @@ client.on("message", message => {
   }
 });
 
+client.on("message", message => {
+  if (!message.guild) return;
+  if (message.content === "2!wara") {
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel
+        .join()
+        .then(connection => {
+          message.reply("جۆینم کرد");
+        })
+        .catch(console.log);
+    } else {
+      message.reply("تکایە بچۆ چەنال ڤۆیسێک ئەنجا بەکاری بێنە");
+    }
+  }
+});
 // ======== { • security • }======== //
 const tpoints = {};
 const vpoints = {};
