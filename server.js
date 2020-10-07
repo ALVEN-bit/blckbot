@@ -35,7 +35,26 @@ const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
-  ////////////////mrfix
+  //  ========(  muti )==========   //
+  //
+client.on("message", message => {
+  if (message.content.startsWith(`1!mute`)) {
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      let role = message.guild.roles.find(r => r.name === "Muted");
+      let member = message.mentions.members.first();
+      if (member) {
+        member.removeRoles(member.roles);
+        member.addRole(role).catch(console.error);
+        message.channel.send(`${member} has been muted!`);
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
+    } else {
+      message.channel.send("You are not a high enough rank!");
+    }
+  }
+});
+  
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
