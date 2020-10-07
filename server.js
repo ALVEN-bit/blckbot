@@ -213,6 +213,8 @@ __کۆماندی ئاسای__ 🔻
 > 2!server
 > 2!user
 > 2!wara
+> 2!avatar
+> 2!image
 
 > Best Discord __AntiSpam__
 > Best Discord __AntiShare Everyone & Here & Link .__`;
@@ -278,6 +280,44 @@ client.on("message", message => {
     }
   }
 });
+//  ======  [  avatar  ]  =======  //
+
+client.on("message", message => {
+  const mm = message.mentions.members.first() || message.member;
+  if (message.content.startsWith(prefix + "avatar")) {
+    const embed = new Discord.RichEmbed()
+      .setAuthor(mm.user.tag, mm.user.avatarURL)
+      .setTitle("Avatar Link")
+      .setURL(mm.user.avatarURL)
+      .setImage(mm.user.avatarURL)
+      .setFooter(
+        `Requested By : ${message.author.tag}`,
+        message.author.avatarURL
+      );
+    message.channel.send(embed);
+  }
+});
+
+//   ======= ( inmage )  ======  //
+
+client.on("message", message => {
+  if (!message.channel.guild) return;
+  if (message.author.bot) return;
+  if (message.content === prefix + "image") {
+    const embed = new Discord.RichEmbed()
+
+      .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
+      .setAuthor(message.author.username, message.guild.iconrURL)
+      .setColor(0x164fe3)
+      .setImage(message.guild.iconURL)
+      .setURL(message.guild.iconrURL)
+      .setTimestamp();
+
+    message.channel.send({ embed });
+  }
+});
+
+// ======== [ kick ]  ========= //
 
 client.on("message", message => {
   if (message.content.startsWith(`2!kick`)) {
