@@ -137,8 +137,8 @@ client.on("ready", () => {
 
   client.on("guildMemberAdd", member => {
     member.guild.fetchInvites().then(guildInvites => {
-      const gamer = invites[member.guild.id];
-      invites[member.guild.id] = guildInvites;
+      const gamer = invite[member.guild.id];
+      invite[member.guild.id] = guildInvites;
       const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
       const inviter = client.users.get(invite.inviter.id);
       const welcome = member.guild.channels.find(
@@ -186,7 +186,7 @@ __کۆماندەکانی ئۆنەر شیپ__ 🔻
 > 2!anti roleD [number]
 > 2!anti roleC [number]
 > 2!anti time [number]
-> 2!antibots [on / off]
+> 2!anti bots [on / off]
 > 2!settings
 
 __کۆماندەکانی ئەدمین__ 🔻
