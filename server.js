@@ -35,7 +35,76 @@ const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
-  ////////////////mrfix
+  
+// ======== { • lock unlock • }======== //
+
+client.on("message", message => {
+  if (message.content.startsWith(`1!mute`)) {
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      let role = message.guild.roles.find(r => r.name === "Muted");
+      let member = message.mentions.members.first();
+      if (member) {
+        member.removeRoles(member.roles);
+        member.addRole(role).catch(console.error);
+        message.channel.send(`${member} has been muted!`);
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
+    } else {
+      message.channel.send("You are not a high enough rank!");
+    }
+  }
+});
+  
+  client.on("message", message => {
+  if (message.content.startsWith(`1!unmute`)) {
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      let member = message.mentions.members.first();
+      let role = message.guild.roles.find(r => r.name === "Muted");
+      if (member) {
+        member.removeRole(role).catch(console.error);
+        message.channel.send(`${member} has been unmuted!`);
+      } else {
+        message.channel.send("You need to mention a user!");
+      }
+    } else {
+      message.channel.send("You are not a high enough rank.");
+    }
+  }
+});
+  
+  // ======== { • lock unlock • }======== //
+
+client.on("guildMemberAdd", member => {
+  let channel = member.guild.channels.find("name", "┃✨┃welcome");
+  let memberavatar = member.user.avatarURL;
+  if (!channel) return;
+  let embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setThumbnail(memberavatar)
+    .addField(
+      ":bust_in_silhouette: | Welcome!",
+      `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
+    )
+    .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
+    .addField(
+      "__**:id: | ئــەکــاونــتــت :**__",
+      "**[" + `${member.id}` + "]**"
+    )
+    .addField(
+      "__**:family_mwgb: | تــۆ کــەســی ژمــارە : **__ ",
+      `${member.guild.memberCount}`
+    )
+    .addField(
+      "__**📍 | نــاوی مــیــمــبــەر:**__",
+      `<@` + `${member.id}` + `>`,
+      true
+    )
+    .addField(
+      "__**🔰 | نــاوی ســێــرڤــەر : **__",
+      `${member.guild.name}`,
+      true
+    )
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
@@ -1022,12 +1091,4 @@ client.on("message", msg => {
   }
 });
 // ======== { • anti here • }======== //
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("@here")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```تۆ ناتوانی هێرر لێبدەی .```");
-  }
-});
+  
