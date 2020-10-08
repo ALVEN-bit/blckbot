@@ -257,20 +257,6 @@ client.on("message", async message => {
   }
 });
 
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('message', msg => {
-  if (msg.content === 'chony') {
-    msg.reply('to chony ');
-  }
-});
-
-client.login('token lera dabne');
-
-
 client.on("message", message => {
   if (message.content.startsWith(`2!ban`)) {
     if (message.member.hasPermission("BAN_MEMBERS")) {
