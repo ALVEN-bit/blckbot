@@ -1529,4 +1529,17 @@ client.on("message", message => {
   }
 });
 
-///   ===== ( )  ======   ///
+///   ===== ( replay )  ======   ///
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', msg => {
+  if (msg.content === 'سڵاو') {
+    msg.reply('سڵاو دڵم تکایە چاوەروان بە تا رۆڵ بەدەستێ جوابت دەداتەوە ✅ ');
+  }
+});
+
+///   ======  [  ]  ======   ///
+
