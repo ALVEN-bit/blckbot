@@ -200,13 +200,13 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!say
 > 2!bc
 
-__ژورەکان بەم شێوەیە لێبکە__🔻
+__ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
 > ┃welcome
 > ┃left
 > ┃invite
 
-__کۆماندی ئاسای__ 🔻
+__کۆماندی ئاسای__ 🔻                                         
 
 > 2!bots
 > 2!invite
@@ -217,8 +217,9 @@ __کۆماندی ئاسای__ 🔻
 > 2!avatar
 > 2!image
 
-> Best Discord __AntiSpam__
-> Best Discord __AntiShare Everyone & Here & Link .__`;
+> Best Discord __Anti Spam__.
+> Best Discord __Anti Share  Link__ .
+> Best Discord __Anti Here & Everony __:`;
     var addserver = ``;
     var SUPPORT = `https://discord.gg/vDEfjk4`;
     let embed = new Discord.RichEmbed()
