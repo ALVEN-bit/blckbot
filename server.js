@@ -542,7 +542,7 @@ client.on("message", async message => {
       return message.channel.send(
         "<a:x1:669825119904071691>| **يجب أن يكون لديك خاصية التعديل على السيرفر**"
       );
-    message.channel.send(` **من فضلك اكتب اسم الروم**`).then(msgg => {
+    message.channel.send(` **تکایە ژورەکه دیاری بکە**`).then(msgg => {
       message.channel
         .awaitMessages(filter, {
           max: 1,
@@ -597,7 +597,7 @@ client.on("message", async message => {
                               )
                               .setTitle(title)
                               .setDescription(
-                                `المدة : ${duration / 60000} دقائق`
+                                `ماوە : ${duration / 60000} خولەک`
                               )
                               .setFooter(
                                 message.author.username,
@@ -628,7 +628,7 @@ client.on("message", async message => {
                                     .setTitle(title)
                                     .addField(
                                       "انتهى القيف اواي !",
-                                      `الفائز: هو : ${gFilter}`
+                                      `بردیەوە : ئەو : ${gFilter}`
                                     )
                                     .setFooter(
                                       message.guild.name,
@@ -1530,68 +1530,3 @@ client.on("message", message => {
 });
 
 ///   ===== ( )  ======   ///
-client.on('ready', () => {
-  console.log('Now Online, ready to filter!');
-});
-
-
-client.on('message', message => {
-  if(config.FILTER_LIST.some(word => message.content.toLowerCase().includes(word))){
-    message.delete()
-    message.reply('جنێو بدەی دەر ئەکرێیت')
-  }})
-
-
-
-
-
-
-
-
-
-
-
-{
-  "FILTER_LIST" [
-
-    
-    
-    
-    "gawad",
-    "Gawad",
-    "qwn",
-    "Ker",
-    "ker",
-    "qwz",
-    "Qwz",
-    "qwzm",
-    "Qwzm",
-    "jzma",
-    "Jzma",
-    "Qn",
-    "qn",
-    "Qwn",
-    "cherm",
-    "Cherm",
-    "Kerm",
-    "kerm",
-    "7iz",
-    "hiz",
-    "7iz",
-    "daik maza",
-    "xushk sag",
-    "la quzi daikt bam",
-    "xushkt bgem",
-    "daikt bmzhm"
-    ,"xushkt bjum",
-    "dakt bjem",
-    "daik 3iz",
-    "dak maza",
-    "dak kude",
-    "dak gndora"
-    ,"pwr",
-    "nank",
-    "chir","Quz","cher","qashmar","Qashmar"
-  ]
-}
-
