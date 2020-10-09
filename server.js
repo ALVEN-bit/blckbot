@@ -542,7 +542,7 @@ client.on("message", async message => {
       return message.channel.send(
         "<a:x1:669825119904071691>| **يجب أن يكون لديك خاصية التعديل على السيرفر**"
       );
-    message.channel.send(` **تکایە ژورەکه دیاری بکە**`).then(msgg => {
+    message.channel.send(` **من فضلك اكتب اسم الروم**`).then(msgg => {
       message.channel
         .awaitMessages(filter, {
           max: 1,
@@ -597,7 +597,7 @@ client.on("message", async message => {
                               )
                               .setTitle(title)
                               .setDescription(
-                                `ماوە : ${duration / 60000} خولەک`
+                                `المدة : ${duration / 60000} دقائق`
                               )
                               .setFooter(
                                 message.author.username,
@@ -616,7 +616,8 @@ client.on("message", async message => {
                                   let gFilter =
                                     list[
                                       Math.floor(Math.random() * list.length) +
-                                        0
+
+                                     0
                                     ];
                                   if (users.size === 1)
                                     gFilter = "**لم يتم التحديد**";
@@ -628,7 +629,7 @@ client.on("message", async message => {
                                     .setTitle(title)
                                     .addField(
                                       "انتهى القيف اواي !",
-                                      `بردیەوە : ئەو : ${gFilter}`
+                                      `الفائز: هو : ${gFilter}`
                                     )
                                     .setFooter(
                                       message.guild.name,
@@ -640,6 +641,7 @@ client.on("message", async message => {
                             msgg.edit(
                               `<a:x2:669825119492767745> | **تم اعداد القيف اواي**`
                             );
+                        
                           } catch (e) {
                             msgg.edit(
                               `<a:x1:669825119904071691> | **لم اقدر على اعداد القيف اواي بسبب نقص الخصائص**`
@@ -654,7 +656,7 @@ client.on("message", async message => {
     });
   }
 });
-
+       
 // ======== { • user • }======== //
 
 client.on("message", message => {
@@ -764,7 +766,8 @@ julian.on("guildMemberAdd", member => {
   if (member.user.bot) return member.kick();
 });
 // ======== { • security • }======== //
-
+const tpoints = {};
+const vpoints = {};
 let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
 let config = JSON.parse(fs.readFileSync("./config.json", "UTF8"));
 client.on("message", message => {
@@ -1528,17 +1531,4 @@ client.on("message", message => {
   }
 });
 
-///   ===== ( replay )  ======   ///
-
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on("message", msg => {
-  if (msg.content === "سڵاو") {
-    msg.reply("سڵاو دڵم تکایە چاوەروان بە تا رۆڵ بەدەستێ جوابت دەداتەوە ✅ ");
-  }
-});
-
-///   ======  [ codi jnew ]  ======   ///
-///  =======  (  codi jaw )    =========  ///
+///   ===== ( )  ======   ///
