@@ -542,7 +542,7 @@ client.on("message", async message => {
       return message.channel.send(
         "<a:x1:669825119904071691>| **يجب أن يكون لديك خاصية التعديل على السيرفر**"
       );
-    message.channel.send(` **من فضلك اكتب اسم الروم**`).then(msgg => {
+    message.channel.send(` **تکایە ژورەکه دیاری بکە**`).then(msgg => {
       message.channel
         .awaitMessages(filter, {
           max: 1,
@@ -597,7 +597,7 @@ client.on("message", async message => {
                               )
                               .setTitle(title)
                               .setDescription(
-                                `المدة : ${duration / 60000} دقائق`
+                                `ماوە : ${duration / 60000} خولەک`
                               )
                               .setFooter(
                                 message.author.username,
@@ -616,8 +616,7 @@ client.on("message", async message => {
                                   let gFilter =
                                     list[
                                       Math.floor(Math.random() * list.length) +
-
-                                     0
+                                        0
                                     ];
                                   if (users.size === 1)
                                     gFilter = "**لم يتم التحديد**";
@@ -629,7 +628,7 @@ client.on("message", async message => {
                                     .setTitle(title)
                                     .addField(
                                       "انتهى القيف اواي !",
-                                      `الفائز: هو : ${gFilter}`
+                                      `بردیەوە : ئەو : ${gFilter}`
                                     )
                                     .setFooter(
                                       message.guild.name,
@@ -641,7 +640,6 @@ client.on("message", async message => {
                             msgg.edit(
                               `<a:x2:669825119492767745> | **تم اعداد القيف اواي**`
                             );
-                        
                           } catch (e) {
                             msgg.edit(
                               `<a:x1:669825119904071691> | **لم اقدر على اعداد القيف اواي بسبب نقص الخصائص**`
@@ -656,7 +654,7 @@ client.on("message", async message => {
     });
   }
 });
-       
+
 // ======== { • user • }======== //
 
 client.on("message", message => {
