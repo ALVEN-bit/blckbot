@@ -1543,27 +1543,26 @@ client.on("message", msg => {
 
 // ========  ( replay )  ======== //
 
-client.on('ready', () => {
+client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
-  if (msg.content === 'Slaw') {
-    msg.reply('Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅');
+client.on("message", msg => {
+  if (msg.content === "Slaw") {
+    msg.reply("Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅");
   }
 });
 
 //  ======   [  replay  ]  =========  //
 
-client.on('ready', () => {
+client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
-  if (msg.content === 'slaw') {
-    msg.reply('Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅');
+client.on("message", msg => {
+  if (msg.content === "slaw") {
+    msg.reply("Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅");
   }
 });
 
 //  ========= (  dzha juen  )  ========  //
-
