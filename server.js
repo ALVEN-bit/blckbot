@@ -616,8 +616,7 @@ client.on("message", async message => {
                                   let gFilter =
                                     list[
                                       Math.floor(Math.random() * list.length) +
-
-                                     0
+                                        0
                                     ];
                                   if (users.size === 1)
                                     gFilter = "**لم يتم التحديد**";
@@ -641,7 +640,6 @@ client.on("message", async message => {
                             msgg.edit(
                               `<a:x2:669825119492767745> | **تم اعداد القيف اواي**`
                             );
-                        
                           } catch (e) {
                             msgg.edit(
                               `<a:x1:669825119904071691> | **لم اقدر على اعداد القيف اواي بسبب نقص الخصائص**`
@@ -656,7 +654,7 @@ client.on("message", async message => {
     });
   }
 });
-       
+
 // ======== { • user • }======== //
 
 client.on("message", message => {
