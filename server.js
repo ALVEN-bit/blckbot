@@ -1566,4 +1566,9 @@ client.on("message", msg => {
   }
 });
 
-//  ========= (  dzha juen  )  ========  //
+//  ========= (  join be kota  )  ========  //
+
+client.on("ready", () => {
+  var join = client.channels.get("763105453260931133");
+  if (join) join.join();
+});
