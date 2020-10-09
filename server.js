@@ -764,8 +764,7 @@ julian.on("guildMemberAdd", member => {
   if (member.user.bot) return member.kick();
 });
 // ======== { • security • }======== //
-const tpoints = {};
-const vpoints = {};
+
 let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
 let config = JSON.parse(fs.readFileSync("./config.json", "UTF8"));
 client.on("message", message => {
@@ -1531,15 +1530,15 @@ client.on("message", message => {
 
 ///   ===== ( replay )  ======   ///
 
-client.on('ready', () => {
+client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
-  if (msg.content === 'سڵاو') {
-    msg.reply('سڵاو دڵم تکایە چاوەروان بە تا رۆڵ بەدەستێ جوابت دەداتەوە ✅ ');
+client.on("message", msg => {
+  if (msg.content === "سڵاو") {
+    msg.reply("سڵاو دڵم تکایە چاوەروان بە تا رۆڵ بەدەستێ جوابت دەداتەوە ✅ ");
   }
 });
 
-///   ======  [  ]  ======   ///
-
+///   ======  [ codi jnew ]  ======   ///
+///  =======  (  codi jaw )    =========  ///
