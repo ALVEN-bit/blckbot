@@ -1575,12 +1575,3 @@ client.on("ready", () => {
 
 //  =========  (  dzha jun  )    =========  //
 
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("کەر")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جوێن مەدە حەیوان 😂.```");
-  }
-});
