@@ -546,7 +546,7 @@ client.on("message", async message => {
     message.channel.send(` **تکایە ژورەکه دیاری بکە**`).then(msgg => {
       message.channel
         .awaitMessages(filter, {
-          max:1,
+          max: 1,
           time: 20000,
           errors: ["time"]
         })
@@ -557,7 +557,7 @@ client.on("message", async message => {
           );
           if (!room)
             return message.channel.send(
-              "<a:x1:764446824580251658> | **لم اقدر على ايجاد الروم المطلوب**"
+              "<a:x1:669825119904071691> | **لم اقدر على ايجاد الروم المطلوب**"
             );
           room = collected.first().content;
           collected.first().delete();
@@ -649,6 +649,14 @@ client.on("message", async message => {
                           }
                         });
                     });
+                });
+            });
+        });
+    });
+  }
+});
+
+// ======== { • user • }======== //
 
 client.on("message", message => {
   if (message.content.startsWith(prefix + "user")) {
@@ -664,7 +672,33 @@ client.on("message", message => {
     var mentionned = message.mentions.members.first();
     var h;
     if (mentionned) {
-      h = mention
+      h = mentionned;
+    } else {
+      h = message.member;
+    }
+    moment.locale("en-TN");
+    var id = new Discord.RichEmbed()
+      .setAuthor(message.author.username, message.author.avatarURL)
+      .setColor("RANDOM")
+      .addField(
+        " کاتی دانانی ئەکاونت : ",
+        `${moment(heg.createdTimestamp).format(
+          "YYYY/M/D HH:mm:ss"
+        )} **\n** \`${moment(heg.createdTimestamp).fromNow()}\``,
+        true
+      )
+      .addField(
+        " هاتیتە سێرڤەر لە : ",
+        `${moment(h.joinedAt).format("YYYY/M/D HH:mm:ss")} \n \`${moment(
+          h.joinedAt
+        ).fromNow()}\``,
+        true
+      )
+      .setFooter(`${message.author.username}`, "")
+      .setThumbnail(heg.avatarURL);
+    message.channel.send(id);
+  }
+});
 
 client.on("message", message => {
   if (!message.guild) return;
@@ -1540,3 +1574,4 @@ client.on("ready", () => {
 });
 
 //  =========  (  dzha jun  )    =========  //
+
