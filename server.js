@@ -567,21 +567,21 @@ client.on("message", async message => {
 
     let embed3 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("Wrong room name");
+      .setDescription("دڵنیاببەوە لە ژورەکە");
 
     let embed4 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("Please send the `time`");
+      .setDescription("تکایە `کاتەکە`دیاری بکە");
 
     let embed5 = new Discord.RichEmbed()
       .setColor()
       .setDescription(
-        "Wrong time format\nExample of time format: 1s / 1m / 1h / 1d / 1w"
+        "دڵنیا ببەوە لە کاتەکە\ بۆ نموونە : 1s / 1m / 1h / 1d / 1w"
       );
 
     let embed6 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("Please send the `gift`");
+      .setDescription("تکایە `دەستکەوتەکە `دیاری بکە");
 
     if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD"))
       return message.channel.send(embed1);
