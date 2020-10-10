@@ -532,18 +532,59 @@ client.on("message", message => {
 //  ===== [  ]  =====  //
 
 client.on("message", async message => {
+  const moment = require("2!giveaway"); //npm i moment
+  const ms = require("ms"); //npm i ms // var prefix = '' //Bot Prefix !
+  var time = moment().format("Do MMMM YYYY , hh:mm");
   var room;
   var title;
   var duration;
-  var gMembers;
+  var currentTime = new Date(),
+    hours = currentTime.getHours() + 3,
+    minutes = currentTime.getMinutes(),
+    done = currentTime.getMinutes() + duration,
+    seconds = currentTime.getSeconds();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  var suffix = "AM";
+  if (hours >= 12) {
+    suffix = "PM";
+    hours = hours - 12;
+  }
+  if (hours == 0) {
+    hours = 12;
+  }
   var filter = m => m.author.id === message.author.id;
-  if (message.content.startsWith(prefix + "giveaway")) {
-    //return message.channel.send('<a:rj:601337828122558468>| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
-    if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD"))
-      return message.channel.send(
-        "<a:x1:669825119904071691>| **يجب أن يكون لديك خاصية التعديل على السيرفر**"
+  if (message.content.startsWith("2!giveaway")) {
+    let embed1 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription("Missing the following permission `MANAGE_GUILD`");
+
+    let embed2 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription("Please send the `room` name without mentioning it");
+
+    let embed3 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription("Wrong room name");
+
+    let embed4 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription("Please send the `time`");
+
+    let embed5 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription(
+        "Wrong time format\nExample of time format: 1s / 1m / 1h / 1d / 1w"
       );
-    message.channel.send(` **تکایە ژورەکه دیاری بکە**`).then(msgg => {
+
+    let embed6 = new Discord.RichEmbed()
+      .setColor()
+      .setDescription("Please send the `gift`");
+
+    if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD"))
+      return message.channel.send(embed1);
+    message.channel.send(embed2).then(msg => {
       message.channel
         .awaitMessages(filter, {
           max: 1,
@@ -552,105 +593,104 @@ client.on("message", async message => {
         })
         .then(collected => {
           let room = message.guild.channels.find(
-            "name",
-            collected.first().content
+            gg => gg.name === collected.first().content
           );
-          if (!room)
-            return message.channel.send(
-              "<a:x1:669825119904071691> | **لم اقدر على ايجاد الروم المطلوب**"
-            );
+          if (!room) return message.channel.send(embed3);
           room = collected.first().content;
           collected.first().delete();
-          msgg
-            .edit("**اكتب مدة القيف اواي بالدقائق , مثال : 60**")
-            .then(msg => {
-              message.channel
-                .awaitMessages(filter, {
-                  max: 1,
-                  time: 20000,
-                  errors: ["time"]
-                })
-                .then(collected => {
-                  if (isNaN(collected.first().content))
-                    return message.channel.send(
-                      "<a:x1:669825119904071691 | **يجب عليك ان تحدد وقت زمني صحيح.. ``يجب عليك اعادة كتابة الامر``**"
-                    );
-                  duration = collected.first().content * 60000;
-                  collected.first().delete();
-                  msgg
-                    .edit("**واخيرا اكتب على ماذا تريد القيف اواي**")
-                    .then(msg => {
-                      message.channel
-                        .awaitMessages(filter, {
-                          max: 1,
-                          time: 20000,
-                          errors: ["time"]
-                        })
-
-                        .then(collected => {
-                          title = collected.first().content;
-                          collected.first().delete();
-                          try {
-                            let giveEmbed = new Discord.RichEmbed()
-                              .setAuthor(
-                                message.guild.name,
-                                message.guild.iconURL
-                              )
-                              .setTitle(title)
-                              .setDescription(
-                                `ماوە : ${duration / 60000} خولەک`
-                              )
-                              .setFooter(
-                                message.author.username,
-                                message.author.avatarURL
-                              );
-                            message.guild.channels
-                              .find("name", room)
-                              .send(giveEmbed)
-                              .then(m => {
-                                let re = m.react("🎉");
-                                setTimeout(() => {
-                                  let users = m.reactions.get("🎉").users;
-                                  let list = users
-                                    .array()
-                                    .filter(u => u.id !== m.author.id);
-                                  let gFilter =
-                                    list[
-                                      Math.floor(Math.random() * list.length) +
-                                        0
-                                    ];
-                                  if (users.size === 1)
-                                    gFilter = "**لم يتم التحديد**";
-                                  let endEmbed = new Discord.RichEmbed()
-                                    .setAuthor(
-                                      message.author.username,
-                                      message.author.avatarURL
-                                    )
-                                    .setTitle(title)
-                                    .addField(
-                                      "انتهى القيف اواي !",
-                                      `بردیەوە : ئەو : ${gFilter}`
-                                    )
-                                    .setFooter(
-                                      message.guild.name,
-                                      message.guild.iconURL
-                                    );
-                                  m.edit(endEmbed);
-                                }, duration);
-                              });
-                            msgg.edit(
-                              `<a:x2:669825119492767745> | **تم اعداد القيف اواي**`
-                            );
-                          } catch (e) {
-                            msgg.edit(
-                              `<a:x1:669825119904071691> | **لم اقدر على اعداد القيف اواي بسبب نقص الخصائص**`
-                            );
-                            console.log(e);
-                          }
-                        });
+          msg.edit(embed4).then(msg => {
+            message.channel
+              .awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ["time"]
+              })
+              .then(collected => {
+                if (!collected.first().content.match(/[1-60][s,m,h,d,w]/g))
+                  return message.channel.send(embed5);
+                duration = collected.first().content;
+                collected.first().delete();
+                msg.edit(embed6).then(msg => {
+                  message.channel
+                    .awaitMessages(filter, {
+                      max: 1,
+                      time: 20000,
+                      errors: ["time"]
+                    })
+                    .then(collected => {
+                      title = collected.first().content;
+                      collected.first().delete();
+                      msg.delete();
+                      message.delete();
+                      try {
+                        let giveEmbed = new Discord.RichEmbed()
+                          .setColor()
+                          .setTitle(`${title}`)
+                          .setDescription(
+                            `React With 🎉 To Enter! \nTime remaining : ${duration} \n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`
+                          );
+                        message.guild.channels
+                          .find(gg => gg.name === room)
+                          .send(" :tada: **Giveaway** :tada:", {
+                            embed: giveEmbed
+                          })
+                          .then(m => {
+                            let re = m.react("🎉");
+                            setTimeout(() => {
+                              let users = m.reactions.get("🎉").users;
+                              let list = users
+                                .array()
+                                .filter(
+                                  u => (u.id !== m.author.id) !== client.user.id
+                                );
+                              let gFilter =
+                                list[
+                                  Math.floor(Math.random() * list.length) + 1
+                                ];
+                              if (gFilter === undefined) {
+                                let endEmbed = new Discord.RichEmbed()
+                                  .setColor()
+                                  .setTitle(title)
+                                  .setDescription(
+                                    `Winners : no enough number of reaction so there is no winner`
+                                  )
+                                  .setFooter("Ended at :")
+                                  .setTimestamp();
+                                m.edit("** 🎉 GIVEAWAY ENDED 🎉**", {
+                                  embed: endEmbed
+                                });
+                              } else {
+                                let endEmbed = new Discord.RichEmbed()
+                                  .setColor()
+                                  .setTitle(title)
+                                  .setDescription(`Winners : ${gFilter}`)
+                                  .setFooter("Ended at :")
+                                  .setTimestamp();
+                                m.edit("** 🎉 GIVEAWAY ENDED 🎉**", {
+                                  embed: endEmbed
+                                });
+                              }
+                              if (gFilter === undefined) {
+                                // message.guild.channels.find("name" , room).send("No enough number of reactions")
+                              } else {
+                                message.guild.channels
+                                  .find(gg => gg.name === room)
+                                  .send(
+                                    `**Congratulations ${gFilter}! You won The \`${title}\`**`
+                                  );
+                              }
+                            }, ms(duration));
+                          });
+                      } catch (e) {
+                        message.channel.send(
+                          `:heavy_multiplication_x:| **i Don't Have Prem**`
+                        );
+                        console.log(e);
+                      }
                     });
                 });
-            });
+              });
+          });
         });
     });
   }
@@ -1574,4 +1614,3 @@ client.on("ready", () => {
 });
 
 //  =========  (  dzha jun  )    =========  //
-
