@@ -664,11 +664,7 @@ client.on("message", message => {
     var mentionned = message.mentions.members.first();
     var h;
     if (mentionned) {
-      h = mentionned;
-    } else {
-      h = message.member;
-    }
-    moment.locale("en-TN
+      h = mention
 
 client.on("message", message => {
   if (!message.guild) return;
