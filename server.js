@@ -200,6 +200,7 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!say
 > 2!bc
 > 2!giveaway
+> 2!day
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
@@ -1726,3 +1727,26 @@ client.on("message", msg => {
 });
 
 //  ======= [ bo jaw ] ======== //
+
+client.on("message", async message => {
+  if (message.content.startsWith(prefix + "day")) {
+    message.channel.send("```کارا کرا```");
+    if (!message.guild.member(message.author).hasPermissions("MANAGE_CHANNELS"))
+      return message.channel.send("PERMISSION NEEDED");
+    if (!message.guild.member(client.user).hasPermissions(["MANAGE_CHANNELS"]))
+      return message.channel.send("PERMISSION NEEDED");
+
+    message.guild
+      .createChannel(`Day : ${moment().format("dddd")}`, "voice")
+      .then(c => {
+        console.log(`Day channel setup for guild: \n ${message.guild.name}`);
+        c.overwritePermissions(message.guild.id, {
+          CONNECT: false,
+          SPEAK: false
+        });
+        setInterval(function() {
+          c.setName(`❄ Day : 「${moment().format("dddd")}」`);
+        }, 1000);
+      });
+  }
+});
