@@ -218,6 +218,7 @@ __کۆماندی ئاسای__ 🔻
 > 2!wara
 > 2!avatar
 > 2!image
+> 2!report
 
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Link & jnew__.
@@ -1750,3 +1751,63 @@ client.on("message", async message => {
       });
   }
 });
+
+//   =============================== \\
+
+client.on("message", function(message) {
+  if (message.content.startsWith(prefix + "report")) {
+    let messageArgs = message.content
+      .split(" ")
+      .slice(1)
+      .join(" ");
+    let messageReason = message.content
+      .split(" ")
+      .slice(2)
+      .join(" ");
+    if (!messageReason)
+      return message.reply("**# دڵنیاببوە لە راستی وشەکەت!**");
+    let mUser = message.mentions.users.first();
+    if (!mUser) return message.channel.send("تکایە کەسی بەکارهێنەر تاگ بکە.");
+    let Rembed = new Discord.RichEmbed()
+      .setTitle("`ریپۆرتی نوێ!`")
+      .setThumbnail(message.author.avatarURL)
+      .addField("**# - ریپۆرت دراوە لە:**", mUser, true)
+      .addField("**# - ئایدی کەسی ریپۆرت لێدراو :**", mUser.id, true)
+      .addField("**# - بەهۆی:**", messageReason, true)
+      .addField("**# - لە چەناڵی:**", message.channel, true)
+      .addField("**# - لەکاتی:**", message.createdAt, true)
+      .setFooter(
+        "If the reporting was a joke, the person reporting would be subject to penalties"
+      );
+    message.channel.send(Rembed);
+    message.channel
+      .send("__ئایە تۆ دڵنیای دەتەوێ ریپۆرتەکە بروات بۆ ئۆنەر??__")
+      .then(msg => {
+        msg.react("✅");
+        msg
+          .react("❌")
+          .then(() => msg.react("❌"))
+          .then(() => msg.react("✅"));
+        let reaction1Filter = (reaction, user) =>
+          reaction.emoji.name === "✅" && user.id === message.author.id;
+        let reaction2Filter = (reaction, user) =>
+          reaction.emoji.name === "❌" && user.id === message.author.id;
+
+        let reaction1 = msg.createReactionCollector(reaction1Filter, {
+          time: 12000
+        });
+        let reaction2 = msg.createReactionCollector(reaction2Filter, {
+          time: 12000
+        });
+        reaction1.on("collect", r => {
+          message.guild.owner.send(Rembed);
+          message.reply("**# - سەرکەوتوو بوو! 🎇**");
+        });
+        reaction2.on("collect", r => {
+          message.reply("**# - هەڵوەشایەوە!**");
+        });
+      });
+  }
+});
+
+// ================================================ //
