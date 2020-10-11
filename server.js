@@ -1618,10 +1618,104 @@ client.on("ready", () => {
 
 client.on("message", msg => {
   if (msg.author.bot) return;
-  if (msg.content.includes("کەر")) {
-    if (msg.member.hasPermission("MANAGE_EMOJIS")) return;
+  if (msg.content.includes("ker")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
     if (!msg.channel.guild) return;
     msg.delete();
     msg.reply("```جنێو مەدە نێرە کەر.```");
   }
 });
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("qn")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("quz")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("کێر")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("swal")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("سواڵ")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("daik")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("دایک")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("خوشک")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("پور")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("bgem")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
+
+
+
+//  ======= [ bo jaw ] ======== //
