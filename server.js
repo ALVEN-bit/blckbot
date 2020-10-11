@@ -199,6 +199,7 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!unmute
 > 2!say
 > 2!bc
+> 2!giveaway
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
@@ -1500,7 +1501,7 @@ client.on("message", msg => {
 client.on("typingStart", (ch, user) => {
   if (user.presence.status === "offline") {
     ch.send(
-      `${user}(:😜:😠:   دەستەکەو کەشف بوو ئەوە خۆت ئۆفلاین ئەکەی خێرا خۆت ئۆنلاین کە`
+      `${user}(:😂:😠:   دەستەکەو کەشف بوو ئەوە خۆت ئۆفلاین ئەکەی خێرا خۆت ئۆنلاین کە`
     ).then(msg => {
       msg.delete(10000);
     });
@@ -1614,3 +1615,13 @@ client.on("ready", () => {
 });
 
 //  =========  (  dzha jun  )    =========  //
+
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("کەر")) {
+    if (msg.member.hasPermission("MANAGE_EMOJIS")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
