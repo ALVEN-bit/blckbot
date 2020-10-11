@@ -219,7 +219,7 @@ __کۆماندی ئاسای__ 🔻
 > 2!image
 
 > Best Discord __Anti Spam__.
-> Best Discord __Anti Share  Link__ .
+> Best Discord __Anti Link & jnew__.
 > Best Discord __Anti Here & Everony __:`;
     var addserver = ``;
     var SUPPORT = `https://discord.gg/vDEfjk4`;
@@ -1715,7 +1715,14 @@ client.on("message", msg => {
     msg.reply("```جنێو مەدە نێرە کەر.```");
   }
 });
-
-
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("قوز")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply("```جنێو مەدە نێرە کەر.```");
+  }
+});
 
 //  ======= [ bo jaw ] ======== //
