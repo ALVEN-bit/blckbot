@@ -201,6 +201,7 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!bc
 > 2!giveaway
 > 2!day
+> 2!clear
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
@@ -1812,9 +1813,8 @@ client.on("message", function(message) {
 
 // ================================================ //
 
-
 client.on("message", message => {
-  if (message.content.split(" ")[0].toLowerCase() === "1!clear") {
+  if (message.content.split(" ")[0].toLowerCase() === "2!clear") {
     const word = message.content;
     const number = word.slice(7, word.length);
     const int = Number(number);
@@ -1830,7 +1830,7 @@ client.on("message", message => {
       return message.channel.send("ناتوانى ");
     }
     if (int == "1000") {
-      return message.channel.send("supply A Number to Delete");
+      return message.channel.send("تکایە ژمارەکە بنووسە");
     } else if (isNaN(int)) {
       return message.reply("Number");
     }
