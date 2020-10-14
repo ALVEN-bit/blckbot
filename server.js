@@ -225,7 +225,7 @@ __کۆماندی ئاسای__ 🔻
 > Best Discord __Anti Link & jnew__.
 > Best Discord __Anti Here & Everony __:`;
     var addserver = ``;
-    var SUPPORT = `https://discord.gg/vDEfjk4`;
+    var SUPPORT = `https://discord.gg/stfX2EN`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
@@ -761,14 +761,11 @@ client.on("message", message => {
 });
 
 //  ========  (  anti bot   )   ========  //
-
 var Enmap = require("enmap");
-client.antibots = new Enmap({ name: "anti bot" });
+client.antibots = new Enmap({ name: "chat" });
 var antibots = client.antibots;
-var julian = client;
-julian.on("message", codes => {
-  var prefix = "-";
-  if (codes.content == prefix + "anti bots on") {
+client.on("message", codes => {
+  if (codes.content.startsWith(prefix + "anti bots on")) {
     if (
       codes.author.bot ||
       !codes.channel.guild ||
@@ -779,11 +776,9 @@ julian.on("message", codes => {
       onoff: "On"
     });
 
-    codes.channel.send(
-      " ✅ **بەسەرکەوتووی کارا کرا**   <a:x2:669825119492767745>"
-    );
+    codes.channel.send("ئەنتی بۆت چالاک کرا");
   }
-  if (codes.content == prefix + "anti bots off") {
+  if (codes.content.startsWith(prefix + "anti bots off")) {
     if (
       codes.author.bot ||
       !codes.channel.guild ||
@@ -793,13 +788,11 @@ julian.on("message", codes => {
     antibots.set(`${codes.guild.id}`, {
       onoff: "Off"
     });
-    codes.channel.send(
-      " ✅ **بەسەرکەوتووی کارا کرا**  <a:x2:669825119492767745>"
-    );
+    codes.channel.send("ئەنتی بۆت نا چالاک کرا");
   }
 });
 
-julian.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", member => {
   if (!antibots.get(`${member.guild.id}`)) {
     antibots.set(`${member.guild.id}`, {
       onoff: "Off"
