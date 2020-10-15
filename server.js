@@ -173,7 +173,6 @@ client.on("ready", () => {
   }, 2000);
 });
 
-
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
@@ -1724,143 +1723,111 @@ client.on("message", message => {
 
 //  ===========[  dzha jun  ]=========== //
 
-client.on('message', async message => {
-            if(message.content.includes('Maza','Qn','Qwn','Qwndar','dakt bgem','xwshkt bgem','nankt','xwshkt','Babt','maza')){
-                if(message.member.hasPermission("MANAGE_GUILD")) return;
-        if(!message.channel.guild) return;
-        message.delete()
-          var command = message.content.split(" ")[0];
+client.on("message", async message => {
+  if (
+    message.content.includes(
+      "Maza",
+      "Qn",
+      "Qwn",
+      "Qwndar",
+      "dakt bgem",
+      "xwshkt bgem",
+      "nankt",
+      "xwshkt",
+      "Babt",
+      "maza"
+    )
+  ) {
+    if (message.member.hasPermission("MANAGE_GUILD")) return;
+    if (!message.channel.guild) return;
+    message.delete();
+    var command = message.content.split(" ")[0];
     let muterole = message.guild.roles.find(`name`, "Muted");
-    if(!muterole){
-      try{
+    if (!muterole) {
+      try {
         muterole = await message.guild.createRole({
           name: "Muted",
           color: "#000000",
-          permissions:[]
-        })
+          permissions: []
+        });
         message.guild.channels.forEach(async (channel, id) => {
           await channel.overwritePermissions(muterole, {
             SEND_MESSAGES: false,
             ADD_REACTIONS: false
           });
         });
-      }catch(e){
+      } catch (e) {
         console.log(e.stack);
       }
     }
-           if(!message.channel.guild) return message.reply(' This command only for servers');
-     message.member.addRole(muterole);
+    if (!message.channel.guild)
+      return message.reply(" This command only for servers");
+    message.member.addRole(muterole);
     const embed500 = new Discord.RichEmbed()
       .setTitle("Muted Ads")
-            .addField(`**  You Have Been Muted ** , **Reason : Insult**`)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name}`)
-     message.channel.send(embed500)
-     message.author.send(`'🔒تۆ میوت کرای بەھۆی جوێندان...ھەیبە برام رێزی خۆت بگرە خوشکو داکت ھەیە'`);
- 
- 
-    }
-})
-client.on('message', async message => {
-            if(message.content.includes('مەزە','قن','قوز','قندەر','دایک','بیگێم','خوشک','تەنتە','نەنک','باوکت','خوێڕی','کێر')){
-                if(message.member.hasPermission("MANAGE_GUILD")) return;
-        if(!message.channel.guild) return;
-        message.delete()
-          var command = message.content.split(" ")[0];
-    let muterole = message.guild.roles.find(name, "Muted");
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "Muted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
-      }
-    }
-           if(!message.channel.guild) return message.reply(' This command only for servers');
-     message.member.addRole(muterole);
-    const embed500 = new Discord.RichEmbed()
-      .setTitle("Muted Ads")
-            .addField(`**  ئەمە مویت کرا لەبەر جوێن ** , **Reason : Insult**`)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name}`)
-     message.channel.send(embed500)
-     message.author.send(`'🔒تۆ میوت کرای بەھۆی جوێندان...عەیبە برام رێزی خۆت بگرە خوشکو داکت ھەیە'`);
- 
- 
-    }
-})
-
-//  =======================  [   ]  =====================  //
-
-var prefix = 'x'
-
-const { Discord, Client, RichEmbed, Attachment } = require("discord.js");
-const client = new Client({disableEveryone: true});
- 
- const fs = require('fs');
- 
-var prefix = 't!'///PREFIX DANI
- 
-console.log('TALABANI')
-let TALABANI = JSON.parse(fs.readFileSync('./TALABANI.json' , 'utf8'));
- 
-client.on('message', message => {
-    if(message.content.startsWith(prefix + "antijoin on")) {
-        if(!message.channel.guild) return message.reply('**only server**');
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**need permission*** `MANAGE_GUILD`' );
-TALABANI[message.guild.id] = {
-onoff: 'On',
-}
-message.channel.send(`**✅ The AntiJoin Is __𝐎𝐍__ !**`)
-          fs.writeFile("./TALABANI.json", JSON.stringify(TALABANI), (err) => {
-            if (err) return console.error(err)
-            .catch(err => {
-              console.error(err);
-          });
-            });
-          }
-client.on('message', message => {
-    if(message.content.startsWith(prefix + "antijoin off")) {
-        if(!message.channel.guild) return message.reply('**SCHOOL TALABANI**');
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**SCHOOL TALABANI** `MANAGE_GUILD`' );
-TALABANI[message.guild.id] = {
-onoff: 'Off',
-}
-message.channel.send(`**⛔ The AntiJoin Is __𝐎𝐅𝐅__ !**`)
-          fs.writeFile("./TALABANI.json", JSON.stringify(TALABANI), (err) => {
-            if (err) return console.error(err)
-            .catch(err => {
-              console.error(err);
-          });
-            });
-          }
- 
-        })
-client.on("guildMemberAdd", async member => {
-  if(TALABANI[member.guild.id]) TALABANI [member.guild.id] = {
-    onoff: 'Off'
+      .addField(`**  You Have Been Muted ** , **Reason : Insult**`)
+      .setColor("c91616")
+      .setThumbnail(`${message.author.avatarURL}`)
+      .setAuthor(message.author.username, message.author.avatarURL)
+      .setFooter(`${message.guild.name}`);
+    message.channel.send(embed500);
+    message.author.send(
+      `'🔒تۆ میوت کرای بەھۆی جوێندان...ھەیبە برام رێزی خۆت بگرە خوشکو داکت ھەیە'`
+    );
   }
-  if(TALABANI[member.guild.id].onoff === 'Off') return;
-  if(!member.user.bot) return;
-    let accounttime = `t!{TALABANI[member.guild.id].created}`
-    let moment2 = require('moment-duration-format'),
-        moment = require("moment"),
-        date = moment.duration(new Date() - member.user.createdAt).format("d");
- 
-    if(date < accounttime) {
-      member.ban(`  ${TALABANI[member.guild.id].created} days.`)
+});
+client.on("message", async message => {
+  if (
+    message.content.includes(
+      "مەزە",
+      "قن",
+      "قوز",
+      "قندەر",
+      "دایک",
+      "بیگێم",
+      "خوشک",
+      "تەنتە",
+      "نەنک",
+      "باوکت",
+      "خوێڕی",
+      "کێر"
+    )
+  ) {
+    if (message.member.hasPermission("MANAGE_GUILD")) return;
+    if (!message.channel.guild) return;
+    message.delete();
+    var command = message.content.split(" ")[0];
+    let muterole = message.guild.roles.find(name, "Muted");
+    if (!muterole) {
+      try {
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#000000",
+          permissions: []
+        });
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      } catch (e) {
+        console.log(e.stack);
+      }
     }
-  });
+    if (!message.channel.guild)
+      return message.reply(" This command only for servers");
+    message.member.addRole(muterole);
+    const embed500 = new Discord.RichEmbed()
+      .setTitle("Muted Ads")
+      .addField(`**  ئەمە مویت کرا لەبەر جوێن ** , **Reason : Insult**`)
+      .setColor("c91616")
+      .setThumbnail(`${message.author.avatarURL}`)
+      .setAuthor(message.author.username, message.author.avatarURL)
+      .setFooter(`${message.guild.name}`);
+    message.channel.send(embed500);
+    message.author.send(
+      `'🔒تۆ میوت کرای بەھۆی جوێندان...عەیبە برام رێزی خۆت بگرە خوشکو داکت ھەیە'`
+    );
+  }
+});
