@@ -172,32 +172,6 @@ client.on("ready", () => {
     });
   }, 2000);
 });
-
-client.on('message', async message => {
-            if(message.content.includes('Maza','Qn','Qwn','Qwndar','dakt bgem','xwshkt bgem','nankt','xwshkt','Babt','maza')){
-                if(message.member.hasPermission("MANAGE_GUILD")) return;
-        if(!message.channel.guild) return;
-        message.delete()
-          var command = message.content.split(" ")[0];
-    let muterole = message.guild.roles.find(name, "Muted");
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "Muted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
-      }
-    }
-           if(!message.channel.guild) return message.reply(' This command only 
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
@@ -1673,75 +1647,7 @@ client.on("message", msg => {
 client.on("message", msg => {
   if (msg.author.bot) return;
   if (msg.content.includes("swal")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("سواڵ")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("daik")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("دایک")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("خوشک")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("پور")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("bgem")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("قوز")) {
-    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```جنێو مەدە نێرە کەر.```");
-  }
-});
+    i
 
 //  ======= [ bo jaw ] ======== //
 
@@ -1858,3 +1764,43 @@ client.on("message", message => {
 });
 
 //  ===========[    ]=========== //
+
+client.on('message', async message => {
+            if(message.content.includes('Maza','Qn','Qwn','Qwndar','dakt bgem','xwshkt bgem','nankt','xwshkt','Babt','maza')){
+                if(message.member.hasPermission("MANAGE_GUILD")) return;
+        if(!message.channel.guild) return;
+        message.delete()
+          var command = message.content.split(" ")[0];
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#000000",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+           if(!message.channel.guild) return message.reply(' This command only for servers');
+     message.member.addRole(muterole);
+    const embed500 = new Discord.RichEmbed()
+      .setTitle("Muted Ads")
+            .addField(`**  You Have Been Muted ** , **Reason : Insult**`)
+            .setColor("c91616")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name}`)
+     message.channel.send(embed500)
+     message.author.send(`'🔒تۆ میوت کرای بەھۆی جوێندان...ھەیبە برام رێزی خۆت بگرە خوشکو داکت ھەیە'`);
+ 
+ 
+    }
+})
