@@ -1570,24 +1570,24 @@ client.on("message", message => {
 ///   ===== ( replay )  ======   ///
 
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in as ${client.user}!`);
 });
 
 client.on("message", msg => {
   if (msg.content === "سڵاو") {
-    msg.reply("بەخێربێی چاوەروان ببە تا رۆڵ بەدەستێک جوابت دەداتەوە دڵم 📢✅");
+    msg.reply("**ســڵاو لــە تــــۆش ♥**");
   }
 });
 
 // ========  ( replay )  ======== //
 
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in as ${client.user}!`);
 });
 
 client.on("message", msg => {
   if (msg.content === "Slaw") {
-    msg.reply("Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅");
+    msg.reply("**ســڵاو لــە تــــۆش ♥**");
   }
 });
 
@@ -1599,14 +1599,14 @@ client.on("ready", () => {
 
 client.on("message", msg => {
   if (msg.content === "slaw") {
-    msg.reply("Slaw dlm chawarwan bba ta role badastek jwabt dadatawa 🔧✅");
+    msg.reply("**ســڵاو لــە تــــۆش ♥**");
   }
 });
 
 //  ========= (  join be kota  )  ========  //
 
 client.on("ready", () => {
-  var join = client.channels.get("763105453260931133");
+  var join = client.channels.get("755095740526887022");
   if (join) join.join();
 });
 
@@ -1834,3 +1834,5 @@ client.on("message", message => {
     });
   }
 });
+
+//  ===========[    ]=========== //
