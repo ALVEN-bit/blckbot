@@ -35,6 +35,7 @@ const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
+  
   //  ========(  muti )==========   //
 
   client.on("message", message => {
@@ -69,8 +70,7 @@ client.on("ready", () => {
         message.channel.send("ببورە تۆ ڕۆڵت نیە بەتەمای چی");
       }
     }
-  });
-
+});
   //   ===============[ WELCOME - LEFT ]=============  //
 
   client.on("guildMemberAdd", member => {
