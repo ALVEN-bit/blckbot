@@ -181,10 +181,8 @@ __کۆماندەکانی ئۆنەر شیپ__ 🔻
 
 > 2!anti ban [number]
 > 2!anti kick [number]
-> 2!anti channelD [number]
-> 2!anti channelC [number]
-> 2!anti roleD [number]
-> 2!anti roleC [number]
+> 2!anti channel [number]
+> 2!anti role [number]
 > 2!anti time [number]
 > 2!anti bots [on / off]
 > 2!settings
@@ -841,7 +839,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].banLimit = num;
       message.channel.send(
-        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].banLimit} **`
+        `**✔️ |😂 سەرکەوتوو بوو باندکردن نەما : ${config[message.guild.id].banLimit} **`
       );
     }
     if (message.content.startsWith(prefix + "anti kick")) {
@@ -856,7 +854,7 @@ client.on("message", message => {
         `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].kickLimits}**`
       );
     }
-    if (message.content.startsWith(prefix + "anti roleD")) {
+    if (message.content.startsWith(prefix + "anti role")) {
       if (!num)
         return message.channel.send(
           "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
@@ -865,10 +863,10 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleDelLimit = num;
       message.channel.send(
-        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].roleDelLimit}**`
+        `**✔️ | سەرکەوتوو بووanti roleD : ${config[message.guild.id].roleDelLimit}**`
       );
     } ////////////////mrfix
-    if (message.content.startsWith(prefix + "anti roleC")) {
+    if (message.content.startsWith(prefix + "anti role")) {
       if (!num)
         return message.channel.send(
           "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
@@ -877,10 +875,10 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].roleCrLimits = num;
       message.channel.send(
-        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].roleCrLimits}**`
+        `**✔️ | سەرکەوتوو بووanti roleC : ${config[message.guild.id].roleCrLimits}**`
       );
     } ////////////////mrfix
-    if (message.content.startsWith(prefix + "anti channelD")) {
+    if (message.content.startsWith(prefix + "anti channel")) {
       if (!num)
         return message.channel.send(
           "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
@@ -890,10 +888,10 @@ client.on("message", message => {
       config[message.guild.id].chaDelLimit = num;
       message.channel.send(
         ////////////////mrfix
-        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].chaDelLimit}**`
+        `**✔️ | سەرکەوتوو بووanti channelD : ${config[message.guild.id].chaDelLimit}**`
       );
     }
-    if (message.content.startsWith(prefix + "anti channelC")) {
+    if (message.content.startsWith(prefix + "anti channel")) {
       if (!num)
         return message.channel.send(
           "**❌ | تکایە ژمارەی دوای کۆماندەکە بنووسە .**"
@@ -902,7 +900,7 @@ client.on("message", message => {
         return message.channel.send("**❌ | ژمارەی دوای کۆماندەکە بنووسە.**");
       config[message.guild.id].chaCrLimit = num;
       message.channel.send(
-        `**✔️ | سەرکەوتوو بوو : ${config[message.guild.id].chaCrLimit}**`
+        `**✔️ | سەرکەوتوو بووanti channelC : ${config[message.guild.id].chaCrLimit}**`
       );
     } ////////////////mrfix
     if (message.content.startsWith(prefix + "anti time")) {
@@ -1400,7 +1398,6 @@ client.on("guildMemberRemove", async member => {
     });
   }
 });
-// ======== { • anti bots • }======== //
 
 // ======== { • settings • }======== //
 
