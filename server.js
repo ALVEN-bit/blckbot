@@ -1804,3 +1804,63 @@ client.on('message', async message => {
 })
 
 //  =======================  [   ]  =====================  //
+
+var prefix = 'x'
+
+const { Discord, Client, RichEmbed, Attachment } = require("discord.js");
+const client = new Client({disableEveryone: true});
+ 
+ const fs = require('fs');
+ 
+var prefix = 't!'///PREFIX DANI
+ 
+console.log('TALABANI')
+let TALABANI = JSON.parse(fs.readFileSync('./TALABANI.json' , 'utf8'));
+ 
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "antijoin on")) {
+        if(!message.channel.guild) return message.reply('**only server**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**need permission*** `MANAGE_GUILD`' );
+TALABANI[message.guild.id] = {
+onoff: 'On',
+}
+message.channel.send(`**✅ The AntiJoin Is __𝐎𝐍__ !**`)
+          fs.writeFile("./TALABANI.json", JSON.stringify(TALABANI), (err) => {
+            if (err) return console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "antijoin off")) {
+        if(!message.channel.guild) return message.reply('**SCHOOL TALABANI**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**SCHOOL TALABANI** `MANAGE_GUILD`' );
+TALABANI[message.guild.id] = {
+onoff: 'Off',
+}
+message.channel.send(`**⛔ The AntiJoin Is __𝐎𝐅𝐅__ !**`)
+          fs.writeFile("./TALABANI.json", JSON.stringify(TALABANI), (err) => {
+            if (err) return console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+ 
+        })
+client.on("guildMemberAdd", async member => {
+  if(TALABANI[member.guild.id]) TALABANI [member.guild.id] = {
+    onoff: 'Off'
+  }
+  if(TALABANI[member.guild.id].onoff === 'Off') return;
+  if(!member.user.bot) return;
+    let accounttime = `t!{TALABANI[member.guild.id].created}`
+    let moment2 = require('moment-duration-format'),
+        moment = require("moment"),
+        date = moment.duration(new Date() - member.user.createdAt).format("d");
+ 
+    if(date < accounttime) {
+      member.ban(`  ${TALABANI[member.guild.id].created} days.`)
+    }
+  });
