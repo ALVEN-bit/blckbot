@@ -563,7 +563,7 @@ client.on("message", async message => {
 
     let embed2 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە ناوی  `ژورەکە`  بنوسە ");
+      .setDescription("تکایە ناوی  `ژورەکە` بنوسە ");
 
     let embed3 = new Discord.RichEmbed()
       .setColor()
@@ -571,7 +571,7 @@ client.on("message", async message => {
 
     let embed4 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە `کاتەکە` دیاری بکە");
+      .setDescription("تکایە `کاتەکە`دیاری بکە");
 
     let embed5 = new Discord.RichEmbed()
       .setColor()
@@ -581,7 +581,7 @@ client.on("message", async message => {
 
     let embed6 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە `دەستکەوتەکە ` دیاری بکە");
+      .setDescription("تکایە `دەستکەوتەکە `دیاری بکە");
 
     if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD"))
       return message.channel.send(embed1);
@@ -757,11 +757,93 @@ client.on("message", message => {
   }
 });
 
-//    =================  ( anti join )   ========================   //
+
+et antijoin = JSON.parse(fs.readFileSync('./antijoin.json' , 'utf8'));
+ 
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "antijoin on")) {
+        if(!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**يجب ان يكون معك صلاحية*** `MANAGE_GUILD`' );
+antijoin[message.guild.id] = {
+onoff: 'On',
+}
+message.channel.send(`**✅ The AntiJoin Is __𝐎𝐍__ !**`)
+          fs.writeFile("./antijoin.json", JSON.stringify(antijoin), (err) => {
+            if (err) return console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+ 
+        })
+ 
+ 
+
+ 
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "antijoin off")) {
+        if(!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**يجب ان يكون معك صلاحية** `MANAGE_GUILD`' );
+antijoin[message.guild.id] = {
+onoff: 'Off',
+}
+message.channel.send(`**⛔ The AntiJoin Is __𝐎𝐅𝐅__ !**`)
+          fs.writeFile("./antijoin.json", JSON.stringify(antijoin), (err) => {
+            if (err) return console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+ 
+        })
+         client.on('message', message => {
+          if (!message.channel.guild) return;
+ 
+ 
+   if(message.content.startsWith(prefix + "setJoin")) {
+          let time = message.content.split(" ").slice(1).join(" ");
+       if(!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
+       if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**يجب ان يكون معك صلاحية** `MANAGE_GUILD`' );
+if (!time) return message.channel.send('برجاء كتابهة مدة الحساب الممنوع دخولة للسيرفر [Days]');
+let embed = new Discord.RichEmbed()
+
+.setTitle('**تم خاصية من دخول الحسبات الوهمية**')
+.addField('تريخ عمل الحساب:', `${time}.`)
+.addField('بطلب من :', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+antijoin[message.guild.id] = {
+created: time,
+onoff: 'On',
+}
+fs.writeFile("./antijoin.json", JSON.stringify(antijoin), (err) => {
+if (err) console.error(err)
+})
+   }})
+ 
+client.on("guildMemberAdd", async member => {
+  if(!antijoin[member.guild.id]) antijoin[member.guild.id] = {
+    onoff: 'Off'
+  }
+  if(antijoin[member.guild.id].onoff === 'Off') return;
+  if(!member.user.bot) return;
+    let accounttime = `${antijoin[member.guild.id].created}`
+    let moment2 = require('moment-duration-format'),
+        moment = require("moment"),
+        date = moment.duration(new Date() - member.user.createdAt).format("d");
+ 
+    if(date < accounttime) {
+      member.ban(`يجب ان يكون عمر الحسبات اقل من  ${antijoin[member.guild.id].created} days.`)
+    }
+  });
+
 //  ========  (  anti bot   )   ========  //
 var Enmap = require("enmap");
 client.antibots = new Enmap({ name: "chat" });
-var antibots = client.antibots; //
+var antibots = client.antibots;
 client.on("message", codes => {
   if (codes.content.startsWith(prefix + "anti bots on")) {
     if (
@@ -1494,7 +1576,7 @@ client.on("message", msg => {
 client.on("typingStart", (ch, user) => {
   if (user.presence.status === "offline") {
     ch.send(
-      `${user}(😠:   دەستەکەو کەشف بوو ئەوە خۆت ئۆفلاین ئەکەی خێرا خۆت ئۆنلاین کە`
+      `${user}(:😠:   دەستەکەو کەشف بوو ئەوە خۆت ئۆفلاین ئەکەی خێرا خۆت ئۆنلاین کە`
     ).then(msg => {
       msg.delete(10000);
     });
@@ -1603,7 +1685,7 @@ client.on("message", msg => {
 //  ========= (  join be kota  )  ========  //
 
 client.on("ready", () => {
-  var join = client.channels.get("766319594562125895");
+  var join = client.channels.get("755095740526887022");
   if (join) join.join();
 });
 
@@ -1834,247 +1916,3 @@ client.on("message", async message => {
 
 //   ====================    [      ]     ===============    //
 
-
-client.on('ready',async () => {
-  client.channels.find(ch => ch.id === "ايدي حق الروم لي يثبت بيها البوت" && ch.type === 'voice').join();
-});
-client = new Discord.Client({disableEveryone: true});
-client.on("message", async msg => {
-  if (msg.author.bot) return undefined;
-  if (!msg.content.startsWith(prefix)) return undefined;
-
-  let args = msg.content.split(" ");
-
-  let command = msg.content.toLowerCase().split(" ")[0];
-  command = command.slice(prefix.length);
-
-  if (command === `ping`) {
-    let embed = new Discord.RichEmbed()
-      .setColor(3447003)
-      .setTitle("Pong!!")
-      .setDescription(`${client.ping} ms,`)
-      .setFooter(`Requested by | ${msg.author.tag}`);
-    msg.delete().catch(O_o => {});
-    msg.channel.send(embed);
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.author.bot) return undefined;
-  if (!msg.content.startsWith(prefix)) return undefined;
-
-  let args = msg.content.split(" ");
-
-  let command = msg.content.toLowerCase().split(" ")[0];
-  command = command.slice(prefix.length);
-
-  if (command === `avatar`) {
-    if (msg.channel.type === "dm")
-      return msg.channel.send(
-        "Nope Nope!! u can't use avatar command in DMs (:"
-      );
-    let mentions = msg.mentions.members.first();
-    if (!mentions) {
-      let sicon = msg.author.avatarURL;
-      let embed = new Discord.RichEmbed()
-        .setImage(msg.author.avatarURL)
-        .setColor("#5074b3");
-      msg.channel.send({ embed });
-    } else {
-      let sicon = mentions.user.avatarURL;
-      let embed = new Discord.RichEmbed().setColor("#5074b3").setImage(sicon);
-      msg.channel.send({ embed });
-    }
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.author.bot) return undefined;
-  if (!msg.content.startsWith(prefix)) return undefined;
-
-  const args = msg.content.split(" ");
-  const searchString = args.slice(1).join(" ");
-
-  const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
-  const serverQueue = queue.get(msg.guild.id);
-
-  let command = msg.content.toLowerCase().split(" ")[0];
-  command = command.slice(prefix.length);
-
-  if (command === `play`) {
-    const voiceChannel = msg.member.voiceChannel;
-
-    if (!voiceChannel)
-      return msg.channel.send(
-        ":no_entry_sign: You must join a voice channel to use that!"
-      );
-
-    const permissions = voiceChannel.permissionsFor(msg.client.user);
-
-    if (!permissions.has("CONNECT")) {
-      return msg.channel.send("You Don't Have to join is channel");
-    }
-
-    if (!permissions.has("SPEAK")) {
-      return msg.channel.send("You can't speak in this room");
-    }
-
-    if (!permissions.has("EMBED_LINKS")) {
-      return msg.channel.sendMessage(
-        "Ido not have permission  ``EMBED_LINKS`` "
-      );
-    }
-    voiceChannel.join();
-
-    if (!args[1])
-      return msg.channel.send(`:bulb: Play Commands: 
-
-\`\`${prefix}play <song title>\`\` - plays the first result from Youtube
-\`\`${prefix}play <URL>\`\` - plays the provided song, playlist, or stream`);
-
-    if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
-      const playlist = await youtube.getPlaylist(url);
-      const videos = await playlist.getVideos();
-
-      for (const video of Object.values(videos)) {
-        const video2 = await youtube.getVideoByID(video.id);
-        await handleVideo(video2, msg, voiceChannel, true);
-      }
-      return msg.channel.send(
-        `**${playlist.title}**, Just added to the queue!`
-      );
-    } else {
-      try {
-        var video = await youtube.getVideo(url);
-      } catch (error) {
-        try {
-          var videos = await youtube.searchVideos(searchString, 5);
-          let index = 0;
-          const embed1 = new Discord.RichEmbed()
-            .setTitle(":mag_right:  YouTube Search Results :")
-            .setDescription(
-              `
-                    ${videos
-                      .map(video2 => `${++index}. **${video2.title}**`)
-                      .join("\n")}`
-            )
-
-            .setColor("#f7abab");
-
-          /////////////////
-
-          var video = await youtube.getVideoByID(videos[0].id);
-        } catch (err) {
-          console.error(err);
-          return msg.channel.send("I didn't find any results!");
-        }
-      }
-
-      return handleVideo(video, msg, voiceChannel);
-    }
-  } else if (command === `skip`) {
-    if (!msg.member.voiceChannel)
-      return msg.channel.send(
-        ":no_entry_sign: You must join a voice channel to use that!"
-      );
-    if (!serverQueue) return;
-
-    serverQueue.connection.dispatcher.end(
-      `:notes: Skipped asdasd - <@${msg.author.id}>`
-    );
-    msg.channel.send(`:notes: Skipped asdasd - <@${msg.author.id}>`);
-
-    return undefined;
-  } else if (command === `stop`) {
-    if (!msg.member.voiceChannel)
-      return msg.channel.send(
-        ":no_entry_sign: You must join a voice channel to use that!"
-      );
-    if (!serverQueue)
-      return msg.channel.send(
-        ":notes: The player has stopped and the queue has been cleared."
-      );
-
-    serverQueue.songs = [];
-    serverQueue.connection.dispatcher.end(
-      ":notes: The player has stopped and the queue has been cleared."
-    );
-    return undefined;
-  } else if (command === `vol`) {
-    if (!msg.member.voiceChannel)
-      return msg.channel.send(
-        ":no_entry_sign: You must join a voice channel to use that!"
-      );
-    if (!serverQueue)
-      return msg.channel.send(" The bot is not playing :interrobang:");
-    if (!args[1])
-      return msg.channel.send(
-        `:speaker: Current volume is **${serverQueue.volume}**`
-      );
-    if (args[1] > 100 || args[1] < 10)
-      return msg.channel.send(
-        ":no_entry_sign: Volume must be a valid integer between ``10`` and ``100``"
-      );
-
-    serverQueue.volume = args[1];
-
-    serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 100);
-
-    return msg.channel.send(
-      `:loud_sound: Volume changed on \`\`${args[1]}\`\``
-    );
-  } else if (command === `np`) {
-    if (!serverQueue) return msg.channel.send("There is no Queue!");
-
-    return msg.channel.send(
-      `:arrow_forward: **${serverQueue.songs[0].title}**`
-    );
-  } else if (command === `queue`) {
-    if (!serverQueue) return msg.channel.send("There is no Queue!!");
-    //	//	//
-    const embedqu = new Discord.RichEmbed()
-      .setTitle(
-        `:notes: Current Queue | ${serverQueue.songs.length - 1} entries`
-      )
-      .setDescription(
-        `
-        ${serverQueue.songs
-          .map((song, index) =>
-            index == 0 ? null : `**[${index}]** ${song.title} - `
-          )
-          .join("\n")}`
-      )
-      .setColor("#4f545c");
-    return msg.channel
-      .send(`:arrow_forward: **${serverQueue.songs[0].title}**`)
-      .then(a => {
-        msg.channel.sendEmbed(embedqu);
-      });
-  } else if (command === `pause`) {
-    if (serverQueue && serverQueue.playing) {
-      serverQueue.playing = false;
-      serverQueue.connection.dispatcher.pause();
-      return msg.channel.send(
-        ` :notes: Paused **${serverQueue.songs[0].title}** `
-      );
-    }
-    return msg.channel.send(
-      " The player is already paused! Use " + prefix + "``resume`` to unpause!"
-    );
-  } else if (command === "resume") {
-    //  سنايس
-    if (serverQueue && !serverQueue.playing) {
-      serverQueue.playing = true;
-      serverQueue.connection.dispatcher.resume();
-      return msg.channel.send(
-        `:notes: Resumed **${serverQueue.songs[0].title}** `
-      );
-    }
-    return msg.channel.send("Queue is empty!");
-  }
-
-  return undefined;
-});
-
-async function handleVideo(video, msg, voiceChannel, playlist = false) {
-  const serverQueue = queue.get(msg.guil
