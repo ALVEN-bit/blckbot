@@ -2077,19 +2077,4 @@ client.on("message", async msg => {
 });
 
 async function handleVideo(video, msg, voiceChannel, playlist = false) {
-  const serverQueue = queue.get(msg.guild.id);
-  console.log(video);
-
-  const song = {
-    id: video.id,
-    title: Util.escapeMarkdown(video.title),
-    url: `https://www.youtube.com/watch?v=${video.id}`,
-    user: msg.author
-  };
-  if (!serverQueue) {
-    const queueConstruct = {
-      textChannel: msg.channel,
-      voiceChannel: voiceChannel,
-      connection: null,
-      songs: [],
-      volume: 
+  const serverQueue = queue.get(msg.guil
