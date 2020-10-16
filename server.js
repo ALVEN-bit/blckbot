@@ -758,62 +758,6 @@ client.on("message", message => {
 });
 
 //    =================  ( anti join )   ========================   //
-
-console.log("bawannnnnnnnnnnnnnn");
-let bawan = JSON.parse(fs.readFileSync("./bawan.json", "utf8"));
-
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "antijoin on")) {
-    if (!message.channel.guild) return message.reply("**only server**");
-    if (!message.member.hasPermission("MANAGE_GUILD"))
-      return message.channel.send("**need permission*** `MANAGE_GUILD`");
-    bawan[message.guild.id] = {
-      onoff: "On"
-    };
-    message.channel.send(`**✅ The AntiJoin Is __𝐎𝐍__ !**`);
-    fs.writeFile("./bawan.json", JSON.stringify(bawan), err => {
-      if (err)
-        return console.error(err).catch(err => {
-          console.error(err);
-        });
-    });
-  }
-});
-
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "antijoin off")) {
-    if (!message.channel.guild) return message.reply("****");
-    if (!message.member.hasPermission("MANAGE_GUILD"))
-      return message.channel.send("**Black pearl** `MANAGE_GUILD`");
-    bawan[message.guild.id] = {
-      onoff: "Off"
-    };
-    message.channel.send(`**⛔ The AntiJoin Is __𝐎𝐅𝐅__ !**`);
-    fs.writeFile("./bawan.json", JSON.stringify(bawan), err => {
-      if (err)
-        return console.error(err).catch(err => {
-          console.error(err);
-        });
-    });
-  }
-});
-client.on("guildMemberAdd", async member => {
-  if (!bawan[member.guild.id])
-    bawan[member.guild.id] = {
-      onoff: "Off"
-    };
-  if (bawan[member.guild.id].onoff === "Off") return;
-  if (!member.user.bot) return;
-  let accounttime = `${bawan[member.guild.id].created}`;
-  let moment2 = require("moment-duration-format"),
-    moment = require("moment"),
-    date = moment.duration(new Date() - member.user.createdAt).format("d");
-
-  if (date < accounttime) {
-    member.ban(`  ${bawan[member.guild.id].created} days.`);
-  }
-});
-
 //  ========  (  anti bot   )   ========  //
 var Enmap = require("enmap");
 client.antibots = new Enmap({ name: "chat" });
