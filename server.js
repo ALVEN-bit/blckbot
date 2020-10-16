@@ -2051,4 +2051,45 @@ client.on("message", async msg => {
         msg.channel.sendEmbed(embedqu);
       });
   } else if (command === `pause`) {
-    if (serverQueue && serverQueue.play
+    if (serverQueue && serverQueue.playing) {
+      serverQueue.playing = false;
+      serverQueue.connection.dispatcher.pause();
+      return msg.channel.send(
+        ` :notes: Paused **${serverQueue.songs[0].title}** `
+      );
+    }
+    return msg.channel.send(
+      " The player is already paused! Use " + prefix + "``resume`` to unpause!"
+    );
+  } else if (command === "resume") {
+    //  سنايس
+    if (serverQueue && !serverQueue.playing) {
+      serverQueue.playing = true;
+      serverQueue.connection.dispatcher.resume();
+      return msg.channel.send(
+        `:notes: Resumed **${serverQueue.songs[0].title}** `
+      );
+    }
+    return msg.channel.send("Queue is empty!");
+  }
+
+  return undefined;
+});
+
+async function handleVideo(video, msg, voiceChannel, playlist = false) {
+  const serverQueue = queue.get(msg.guild.id);
+  console.log(video);
+
+  const song = {
+    id: video.id,
+    title: Util.escapeMarkdown(video.title),
+    url: `https://www.youtube.com/watch?v=${video.id}`,
+    user: msg.author
+  };
+  if (!serverQueue) {
+    const queueConstruct = {
+      textChannel: msg.channel,
+      voiceChannel: voiceChannel,
+      connection: null,
+      songs: [],
+      volume: 
