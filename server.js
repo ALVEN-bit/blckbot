@@ -757,8 +757,6 @@ client.on("message", message => {
   }
 });
 
-
-
 //  ========  (  anti bot   )   ========  //
 var Enmap = require("enmap");
 client.antibots = new Enmap({ name: "chat" });
@@ -1604,7 +1602,7 @@ client.on("message", msg => {
 //  ========= (  join be kota  )  ========  //
 
 client.on("ready", () => {
-  var join = client.channels.get("755095740526887022");
+  var join = client.channels.get("766319594562125895");
   if (join) join.join();
 });
 
@@ -1834,4 +1832,3 @@ client.on("message", async message => {
 });
 
 //   ====================    [      ]     ===============    //
-
