@@ -563,7 +563,7 @@ client.on("message", async message => {
 
     let embed2 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە ناوی  `ژورەکە` بنوسە ");
+      .setDescription("تکایە ناوی  `ژورەکە`  بنوسە ");
 
     let embed3 = new Discord.RichEmbed()
       .setColor()
@@ -571,7 +571,7 @@ client.on("message", async message => {
 
     let embed4 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە `کاتەکە`دیاری بکە");
+      .setDescription("تکایە `کاتەکە` دیاری بکە");
 
     let embed5 = new Discord.RichEmbed()
       .setColor()
@@ -581,7 +581,7 @@ client.on("message", async message => {
 
     let embed6 = new Discord.RichEmbed()
       .setColor()
-      .setDescription("تکایە `دەستکەوتەکە `دیاری بکە");
+      .setDescription("تکایە `دەستکەوتەکە ` دیاری بکە");
 
     if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD"))
       return message.channel.send(embed1);
@@ -756,7 +756,8 @@ client.on("message", message => {
     }
   }
 });
-//    =================  (  )   ========================   //
+
+//    =================  ( anti join )   ========================   //
 
 var Enmap = require("enmap");
 client.antijoin = new Enmap({ name: "chat" });
@@ -801,7 +802,7 @@ client.on("message", message => {
 client.on("message", message => {
   if (!message.channel.guild) return;
 
-  if (message.content.startsWith(prefix + "setJoin")) {
+  if (message.content.startsWith(prefix + "set Join")) {
     let time = message.content
       .split(" ")
       .slice(1)
