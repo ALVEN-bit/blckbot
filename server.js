@@ -1732,7 +1732,7 @@ client.on("message", async message => {
       return message.channel.send("PERMISSION NEEDED");
 
     message.guild
-      .createChannel(`Day : ${moment().format("dddd")}`, "voice")
+      .createChannel(`✅ Day : ${moment().format("dddd")}`, "voice")
       .then(c => {
         console.log(`Day channel setup for guild: \n ${message.guild.name}`);
         c.overwritePermissions(message.guild.id, {
