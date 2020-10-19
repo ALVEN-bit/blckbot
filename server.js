@@ -9,7 +9,7 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
-////////////////mrfix
+////////////////ksraes
 
 // ======== { • const • }======== //
 const { Client, RichEmbed } = require("discord.js");
@@ -30,7 +30,7 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client.login(process.env.TOKEN);
+client.login("NzY0NDQzNDM4MzI5NjI2NjQ1.X4GVbg.8XvrrzVWnvqEje4_0QdLFQNx6e4");
 const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
@@ -81,7 +81,7 @@ client.on("ready", () => {
       .setColor("RANDOM")
       .setThumbnail(memberavatar)
       .addField(
-        ":bust_in_silhouette: | Welcome!",
+        ":bust_in_silhouette: | Welcome",
         `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
       )
       .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
