@@ -158,7 +158,7 @@ client.on("ready", () => {
   console.log(`Online In Servers : ${client.guilds.size} `);
 
   let statuses = [
-    `2!help | KURD CODING`,
+    `2!help |BAtmay mnafsay mn bkay raes. `,
 
     `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
   ];
@@ -223,7 +223,7 @@ __کۆماندی ئاسای__ 🔻
 
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Link & jnew__.
-> Best Discord __Anti Here & Everony __:`;
+> Best Discord __Anti Here & Everony __:`; <@>
     var addserver = ``;
     var SUPPORT = `https://discord.gg/stfX2EN`;
     let embed = new Discord.RichEmbed()
@@ -1833,4 +1833,29 @@ client.on("message", message => {
         .then(m => m.delete(5000));
     });
   }
+});
+
+client.on('message', message => {
+ 
+if(message.content.includes("@everyone")){
+if(!message.member.hasPermission('KICK_MEMBERS')){
+message.delete(); 
+message.reply(" دە وا نـــا بـــی شـــیــــتــــە")
+}
+ 
+}
+ 
+});
+ 
+ 
+client.on('message', message => {
+ 
+if(message.content.includes("@everyone@everyone")){
+if(!message.member.hasPermission('KICK_MEMBERS')){
+message.delete(); 
+message.reply("گــالــــتـــە لـــــە گــــە لـــــ مــــــن مــــــە کــــەشـــــیــــــتــــە")
+}
+ 
+}
+ 
 });
