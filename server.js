@@ -176,7 +176,7 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = `
+    let Dashboard = `<@693356857863045180>
 __کۆماندەکانی ئۆنەر شیپ__ 🔻
 
 > 2!anti ban [number]
@@ -223,8 +223,8 @@ __کۆماندی ئاسای__ 🔻
 
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Link & jnew__.
-> Best Discord __Anti Here & Everony __:`; <@>
-    var addserver = ``;
+> Best Discord __Anti Here & Everony __:`;
+  var addserver = ``;
     var SUPPORT = `https://discord.gg/stfX2EN`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
@@ -235,7 +235,7 @@ __کۆماندی ئاسای__ 🔻
       .setImage("");
     m.channel.send(embed);
   }
-});
+}); 
 // ======== { • lock unlock • }======== //
 
 client.on("message", async message => {
@@ -357,7 +357,7 @@ client.on("message", message => {
 
       .setTitle("__**بۆ راکێشانی بووتەکە کلیک لەم تێکستە شینە بکە**__")
 
-      .setURL("")
+      .setURL("https://discord.com/api/oauth2/authorize?client_id=764443438329626645&permissions=8&scope=bot")
 
       .setTimestamp()
 
@@ -387,7 +387,7 @@ client.on("message", message => {
       .addField("**چەناڵ** : ", `» ${client.channels.size} `, true)
       .addField("**میمبەر** : ", `» ${client.users.size} `, true)
       .addField("**ناوی بوت** :  ", `» ${client.user.tag} `, true)
-      .addField("**دروستکەر بوت** :  ", `» <@744471904538067065>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوت** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
