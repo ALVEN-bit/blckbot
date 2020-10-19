@@ -363,7 +363,7 @@ client.on("message", message => {
 
       .setFooter(`Requested By | ${message.username}`)
 
-      .setImage("")
+      .setImage("https://cdn.discordapp.com/attachments/763323019325734912/767834927537455144/shield_4.png")
 
       .setColor("RANDOM");
 
