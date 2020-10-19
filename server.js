@@ -225,7 +225,7 @@ __کۆماندی ئاسای__ 🔻
 > Best Discord __Anti Link & jnew__.
 > Best Discord __Anti Here & Everony __:`;
   var addserver = ``;
-    var SUPPORT = `https://discord.gg/stfX2EN`;
+    var SUPPORT = `https://discord.gg/9qkbeRe`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
