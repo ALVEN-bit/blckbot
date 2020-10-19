@@ -74,7 +74,7 @@ client.on("ready", () => {
   //   ===============[ WELCOME - LEFT ]=============  //
 
   client.on("guildMemberAdd", member => {
-    let channel = member.guild.channels.find("name", "┃welcome");
+    let channel = member.guild.channels.find("name", "welcome");
     let memberavatar = member.user.avatarURL;
     if (!channel) return;
     let embed = new Discord.RichEmbed()
@@ -111,7 +111,7 @@ client.on("ready", () => {
     channel.sendEmbed(embed);
   });
   client.on("guildMemberRemove", member => {
-    let channel = member.guild.channels.find("name", "┃left");
+    let channel = member.guild.channels.find("name", "left");
     let memberavatar = member.user.avatarURL;
     if (!channel) return;
     let embed = new Discord.RichEmbed()
@@ -142,7 +142,7 @@ client.on("ready", () => {
       const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
       const inviter = client.users.get(invite.inviter.id);
       const welcome = member.guild.channels.find(
-        channel => channel.name === "┃invite" ///ناوی چەنال لێرە دانێ
+        channel => channel.name === "invite" ///ناوی چەنال لێرە دانێ
       );
       welcome.send(
         `<@${member.id}> **joined:** Invite By <@${inviter.id}> (${invite.uses} invites)`
@@ -205,9 +205,9 @@ __کۆماندەکانی ئەدمین__ 🔻
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
-> ┃welcome
-> ┃left
-> ┃invite
+> welcome
+> left
+> 
 
 __کۆماندی ئاسای__ 🔻                                         
 
