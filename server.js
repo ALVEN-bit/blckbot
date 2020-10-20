@@ -30,7 +30,7 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client("NzU5MDg3ODgyNTEzNjc4Mzc3.X24Zrg.Jl1jFK8qx8w-hYu4");
+client.login("NzY0NDQzNDM4MzI5NjI2NjQ1.X4GVbg.8XvrrzVWnvqEje4_0QdLFQNx6e4");
 const prefix = "2!";
 var table = require("table").table;
 const Discord = require("discord.js");
@@ -1859,29 +1859,3 @@ message.reply("گــالــــتـــە لـــــە گــــە لـــ
 }
  
 });
-
-////STAFF <E/W> ////
-client.on('message', message => {
- 
-if(message.content.includes("@everyone")){
-if(!message.member.hasPermission('KICK_MEMBERS')){
-message.delete(); 
-message.reply("پــیاو دە بــــی بـــا شــە ـپـــیا و ـنــــا بـــی پـــیـــاو ت دە کـــە مـــــم")
-}
- 
-}
- 
-});
- 
- 
-client.on('message', message => {
- 
-if(message.content.includes("@here@here")){
-if(!message.member.hasPermission('KICK_MEMBERS')){
-message.delete(); 
-message.reply("")
-}
- 
-}
- 
-})
