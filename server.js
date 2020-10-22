@@ -362,7 +362,7 @@ client.on("message", message => {
 
 client.on("message", message => {
   let command = message.content.split(" ")[0];
-  if (command == prefix + "about") {
+  if (command == prefix + "bot") {
     const bot = new Discord.RichEmbed()
       .setAuthor(client.user.username, client.user.avatarURL)
       .setColor("RANDOM")
@@ -375,8 +375,13 @@ client.on("message", message => {
       .addField("**چەناڵ** : ", `» ${client.channels.size} `, true)
       .addField("**میمبەر** : ", `» ${client.users.size} `, true)
       .addField("**ناوی بوت** :  ", `» ${client.user.tag} `, true)
-      .addField("**دروستکەر بوت** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .setImage("")
+      .addField("**دروستکەر بوتOWNER** :  ", `» <@766645466778697778>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوتCO OWNER** :  ", `» <@718882264582324364>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوتCO OWNER** :  ", `» <@718920448179699733>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوت CO-OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+    
+     
+    .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
   }
@@ -427,7 +432,7 @@ client.on("message", message => {
 });
 // ======== { • bo jaw • }======== //
 client.on("guildCreate", guild => {
-  client.channels.get("763105472840204288")
+  client.channels.get("768909795654369360")
     .send(`☑️ **${client.user.tag}بۆتەکە ڕاکێشریایە ئەم سێرڤەرە 🔻
                                         
 Server name: __${guild.name}__
@@ -440,7 +445,7 @@ Server Count: __${guild.memberCount}__**`);
 });
 
 client.on("guildDelete", guild => {
-  client.channels.get("763105472840204288")
+  client.channels.get("768909795654369360")
     .send(`❎ **${client.user.tag} سێرڤەرەکەی بە جێ ھێشت
 
 Server name: __${guild.name}__
@@ -486,13 +491,13 @@ client.on("message", message => {
 client.on("message", message => {
   if (message.author.bot) return;
 
-  if (!message.content.startsWith("2!say")) return;
+  if (!message.content.startsWith("w!say")) return;
 
-  let command = message.content.split("2!say")[0];
+  let command = message.content.split("w!say")[0];
   command = command.slice("");
 
-  let args = message.content.split("2!say").slice(1);
-  if (command === "2!say") {
+  let args = message.content.split("w!say").slice(1);
+  if (command === "w!say") {
     if (!message.channel.guild)
       return message.channel
         .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
@@ -503,7 +508,7 @@ client.on("message", message => {
     message.channel.sendMessage(args.join("*e"));
   }
 
-  if ("2!say") {
+  if ("w!say") {
     if (!message.channel.guild)
       return message.channel
         .send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
