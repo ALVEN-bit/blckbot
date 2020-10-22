@@ -136,19 +136,24 @@ client.on("ready", () => {
   //  =================(  invit  )===================  //
 
   client.on("guildMemberAdd", member => {
-    member.guild.fetchInvites().then(guildInvites => {
-      const gamer = invite[member.guild.id];
-      invite[member.guild.id] = guildInvites;
-      const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
-      const inviter = client.users.get(invite.inviter.id);
-      const welcome = member.guild.channels.find(
-        channel => channel.name === "invite" ///ناوی چەنال لێرە دانێ
-      );
-      welcome.send(
-        `<@${member.id}> **joined:** Invite By <@${inviter.id}> (${invite.uses} invites)`
-      );
-    });
+  member.guild.fetchInvites().then(guildInvites => {
+    const gamer = invites[member.guild.id];
+
+    (invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
+
+    const inviter = client.users.get(invite.inviter.id);
+
+    const welcome = member.guild.channels.find(
+      channel => channel.name === "┃invites" ///ناوی چەنال لێرە دانێ
+    );
+
+    welcome.send(
+      `> <@${member.id}> **joined:** Invite By ${inviter.username} (${invite.uses} invites)`
+    );
   });
+});
+
   //  =========  [  striming ]  ========  //
 
   console.log(`Logged in as ${client.user.tag}!`);
@@ -1858,4 +1863,39 @@ message.reply("گــالــــتـــە لـــــە گــــە لـــ
  
 }
  
+});
+
+client.on("message", msg => {
+  if (msg.content === "slaw") {
+    msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "HI") {
+    msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "سلاو") {
+    msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+  }
+});
+
+client.on("message", message => {
+  if (message.content === "سڵاو") {
+    message.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+  }
+});
+    client.on("message", msg => {
+  if (msg.content === "<@718882264582324364>") {
+    msg.channel.send("cherry_blossom | دلم پرسياره كه ت بكه تا ولف دى");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "Slaw") {
+    msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+  }
 });
