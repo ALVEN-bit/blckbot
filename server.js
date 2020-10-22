@@ -30,15 +30,15 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client.login("NzU5MDg3ODgyNTEzNjc4Mzc3.X24Zrg.Jl1jFK8qx8w-hYu4hSedBvSAcMg");
-const prefix = "2!";
+client.login("NzY0OTI0NTExNzIzMzIzNDgy.X4NVdw.Xpyy1UPcZKYBYC7bop-E1XC2hug");
+const prefix = "w!";
 var table = require("table").table;
 const Discord = require("discord.js");
 client.on("ready", () => {
   //  ========(  muti )==========   //
 
   client.on("message", message => {
-    if (message.content.startsWith(`2!mute`)) {
+    if (message.content.startsWith(`w!mute`)) {
       if (message.member.hasPermission("ADMINISTRATOR")) {
         let role = message.guild.roles.find(r => r.name === "Muted");
         let member = message.mentions.members.first();
@@ -135,24 +135,7 @@ client.on("ready", () => {
 
   //  =================(  invit  )===================  //
 
-  client.on("guildMemberAdd", member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const gamer = invites[member.guild.id];
-
-    (invites[member.guild.id] = guildInvites;
-    const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
-
-    const inviter = client.users.get(invite.inviter.id);
-
-    const welcome = member.guild.channels.find(
-      channel => channel.name === "┃invites" ///ناوی چەنال لێرە دانێ
-    );
-
-    welcome.send(
-      `> <@${member.id}> **joined:** Invite By ${inviter.username} (${invite.uses} invites)`
-    );
-  });
-});
+  
 
   //  =========  [  striming ]  ========  //
 
@@ -163,9 +146,9 @@ client.on("ready", () => {
   console.log(`Online In Servers : ${client.guilds.size} `);
 
   let statuses = [
-    `2!help |BAtmay mnafsay mn bkay raes. `,
+    `w!help |BAtmay mnafsay mn bkay WOLF SERVER. `,
 
-    `2!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
+    `w!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
   ];
 
   setInterval(function() {
