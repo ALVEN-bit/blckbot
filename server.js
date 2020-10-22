@@ -179,24 +179,24 @@ client.on("message", m => {
     let Dashboard = `<@693356857863045180>
 __کۆماندەکانی ئۆنەر شیپ__ 🔻
 
-> 2!anti ban [number]
-> 2!anti kick [number]
-> 2!anti channelD [number]
-> 2!anti channelC [number]
-> 2!anti roleD [number]
-> 2!anti roleC [number]
-> 2!anti time [number]
-> 2!anti bots [on / off]
-> 2!settings
+> !anti ban [number]
+> !anti kick [number]
+> !anti channelD [number]
+> !anti channelC [number]
+> !anti roleD [number]
+> !anti roleC [number]
+> !anti time [number]
+> !anti bots [on / off]
+> !settings
 
 __کۆماندەکانی ئەدمین__ 🔻
 
-> 2!lock
-> 2!unlock
-> 2!ban
-> 2!kick
-> 2!mute
-> 2!unmute
+> !lock
+> !unlock
+> !ban
+> !kick
+> !mute
+> !unmute
 > !say
 > !bc
 > !giveaway
