@@ -381,7 +381,7 @@ client.on("message", message => {
       .addField("**CO OWNER** :  ", `» <@749730479267381348>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .addField("**CO OWNER** :  ", `» <@761326713547653140>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .addField("** CO-OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**دروستکەر بوت له لايان KS・RAES** :  ", `»https://discord.gg/9qkbeRe`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوت له لايان KS・RAES ** :  ", `»https://discord.gg/9qkbeRe`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
    
     .setImage("https://cdn.discordapp.com/attachments/763028854902095893/768955386446217236/PicsArt_08-24-07.49.43.png")
       .setFooter(message.author.username, message.author.avatarURL);
@@ -1905,4 +1905,13 @@ client.on("guildCreate", (guild) => {
   
   
   `)
+});
+client.on("message", message => {
+  if (message.content.includes("discord.gg")) {
+    if (!message.member.hasPermission("MANAGE_EMOJIS")) {
+      message.delete();
+      message.reply("جاری دووەم ڕێک باندی ئاگاداربکە تکایە ڕێکلام مەکە");
+      message.reac("🚫");
+    }
+  }
 });
