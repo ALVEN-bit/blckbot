@@ -734,7 +734,7 @@ client.on("message", message => {
 
 client.on("message", message => {
   if (!message.guild) return;
-  if (message.content === "2!wara") {
+  if (message.content === "w!wara") {
     if (message.member.voiceChannel) {
       message.member.voiceChannel
         .join()
@@ -1452,15 +1452,7 @@ const antiSpam = new AntiSpam({
   // And many more options... See the documentation.
 });
 // ======== { • anti reklam • }======== //
-client.on("message", msg => {
-  if (msg.author.bot) return;
-  if (msg.content.includes("http")) {
-    if (msg.member.hasPermission("MANAGE_EMOJIS")) return;
-    if (!msg.channel.guild) return;
-    msg.delete();
-    msg.reply("```ریکلام مەکە خۆم تورەم .```");
-  }
-});
+
 // ======== { • anti everyone • }======== //
 client.on("message", msg => {
   if (msg.author.bot) return;
@@ -1494,7 +1486,7 @@ client.on("typingStart", (ch, user) => {
 //  =========  [ nama ]   ========  //
 client.on("message", message => {
   if (!message.channel.guild) return;
-  if (message.content.startsWith("2!bc")) {
+  if (message.content.startsWith("w!bc")) {
     if (!message.channel.guild)
       return message.channel
         .send("**ئەم فەرمانە بەس بۆ سێرڤەرە**")
@@ -1594,7 +1586,7 @@ client.on("message", msg => {
 //  ========= (  join be kota  )  ========  //
 
 client.on("ready", () => {
-  var join = client.channels.get("763105453260931133");
+  var join = client.channels.get("768902476887228426");
   if (join) join.join();
 });
 
@@ -1795,7 +1787,7 @@ client.on("message", function(message) {
 // ================================================ //
 
 client.on("message", message => {
-  if (message.content.split(" ")[0].toLowerCase() === "2!clear") {
+  if (message.content.split(" ")[0].toLowerCase() === "w!clear") {
     const word = message.content;
     const number = word.slice(7, word.length);
     const int = Number(number);
