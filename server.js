@@ -146,7 +146,7 @@ client.on("ready", () => {
   console.log(`Online In Servers : ${client.guilds.size} `);
 
   let statuses = [
-    `w!help |BAtmay mnafsay mn bkay WOLF SERVER. `,
+    `w!help | You Bot Go Tu Server . `,
 
     `w!help | Servers : ${client.guilds.size} | Users ${client.users.size} `
   ];
@@ -217,7 +217,7 @@ __کۆماندی ئاسای__ 🔻
       .setTitle(`${m.author.username}`)
       .setDescription(
         `**${Dashboard}**
-  **[Add To Your Server BOT](${addserver})** | **[ Server Support BOT ](${SUPPORT})**`
+  **[Add To Your Server Bot](${addserver})** | **[ Server Support Bot ](${SUPPORT})**`
       )
       .setImage("");
     m.channel.send(embed);
