@@ -1882,7 +1882,7 @@ client.on("message", msg => {
     msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
   }
 });
-client.on('guildCreate', guild => {
+   client.on('guildCreate', guild => {
 client.channels.get("768909795654369360").send(`✅ **${client.user.tag} ئادی سێرڤەرێکی تر کرا 
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
@@ -1890,12 +1890,14 @@ Server id: __${guild.id}__
 Server Count: __${guild.memberCount}__**`)
 }); //SCHOOL TALABANI
 client.on('guildDelete', guild => {
-  client.channels.get("ROOM ID").send(`❎ **${client.user.tag} ڕۆشت لە سێرڤەر 
+  client.channels.get("768909795654369360").send(`❎ **${client.user.tag} ڕۆشت لە سێرڤەر 
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
 Server Count: __${guild.memberCount}__**`)
 });
+
+
 client.on("guildCreate", (guild) => {
   let channel = client.channels.get(guild.channels.filter(c => c.permissionsFor(client.user).has("SEND_MESSAGES") && c.type === "text").map(r => r.id)[0])    
   channel.send(`
