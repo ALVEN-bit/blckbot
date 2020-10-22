@@ -210,7 +210,6 @@ __کۆماندی ئاسای__ 🔻
 > !report
 
 > Best Discord __Anti Spam__.
-> Best Discord __Anti Link & jnew__.
 > Best Discord __Anti Here & Everony __:`;
   var addserver = ``;
     var SUPPORT = `https://discord.gg/stfX2EN`;
@@ -251,7 +250,7 @@ client.on("message", async message => {
 });
 
 client.on("message", message => {
-  if (message.content.startsWith(`2!ban`)) {
+  if (message.content.startsWith(`w!ban`)) {
     if (message.member.hasPermission("BAN_MEMBERS")) {
       let member = message.mentions.members.first();
 
@@ -351,7 +350,7 @@ client.on("message", message => {
 
       .setFooter(`Requested By | ${message.username}`)
 
-      .setImage("https://cdn.discordapp.com/attachments/763323019325734912/767834927537455144/shield_4.png")
+      .setImage("https://images-ext-1.discordapp.net/external/QoMLSxMDhmVgmT57yZSAzyMnbf9d7rXV9qMfeu2NTJY/https/media.discordapp.net/attachments/718951310413660242/767309111216963584/image0.gif")
 
       .setColor("RANDOM");
 
@@ -367,20 +366,23 @@ client.on("message", message => {
       .setAuthor(client.user.username, client.user.avatarURL)
       .setColor("RANDOM")
       .addField(
-        "**بوت پینگ** : ",
-        `» ${Date.now() - message.createdTimestamp}` + "خێرای خەت",
+                                    "**بوت پینگ** : ",
+        
+              `» ${Date.now() - message.createdTimestamp}`
+                                              +"خێرای خەت",
         true
       )
+     
       .addField("**سێرڤەر** :  ", `» ${client.guilds.size}`, true)
       .addField("**چەناڵ** : ", `» ${client.channels.size} `, true)
       .addField("**میمبەر** : ", `» ${client.users.size} `, true)
       .addField("**ناوی بوت** :  ", `» ${client.user.tag} `, true)
-      .addField("**دروستکەر بوتOWNER** :  ", `» <@766645466778697778>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**دروستکەر بوتCO OWNER** :  ", `» <@718882264582324364>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**دروستکەر بوتCO OWNER** :  ", `» <@718920448179699733>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**دروستکەر بوت CO-OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-    
-     
+      .addField("**OWNER** :  ", `» <@766645466778697778>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**CO OWNER** :  ", `» <@718882264582324364>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**CO OWNER** :  ", `» <@718920448179699733>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("** CO-OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوت له لايان سكواتى KT SQUAT** :  ", `» https://discord.gg/cZtFTgH`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+   
     .setImage("")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
