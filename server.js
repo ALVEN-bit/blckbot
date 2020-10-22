@@ -30,7 +30,7 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 const dateFormat = require("dateformat");
 const pretty = require("pretty-ms");
-client.login("NzY0OTI0NTExNzIzMzIzNDgy.X4NVdw.Xpyy1UPcZKYBYC7bop-E1XC2hug");
+client.login("NzY4OTQ2NjY0NDQyMjk4NDA5.X5H3Yw.H7qbiRVXdM-_73zA9L7vBz91mzs");
 const prefix = "w!";
 var table = require("table").table;
 const Discord = require("discord.js");
@@ -1863,22 +1863,18 @@ client.on("message", msg => {
   if (msg.content === "سلاو") {
     msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
   }
-});
-
-client.on("message", message => {
-  if (message.content === "سڵاو") {
-    message.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
-  }
-});
+});                         
+                         
+  
     client.on("message", msg => {
-  if (msg.content === "<@718882264582324364>") {
-    msg.channel.send("cherry_blossom | دلم پرسياره كه ت بكه تا ولف دى");
+  if (msg.content === "<@693356857863045180>") {
+    msg.channel.send("cherry_blossom | دلم پرسياره كه ت بكه تا دیتە خە یاخود ئیشی هە یە دى");
   }
 });
 
 client.on("message", msg => {
   if (msg.content === "Slaw") {
-    msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
+    msg.channel.send("| سڵاو لە تۆش بەخێربێیت");
   }
 });
    client.on('guildCreate', guild => {
@@ -1905,7 +1901,7 @@ client.on("guildCreate", (guild) => {
   
   joined everyone
 
-  Server Support : https://discord.gg/yekreDY
+  Server Support : https://discord.gg/9qkbeRe
   
   
   `)
