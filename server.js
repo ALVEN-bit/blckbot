@@ -164,7 +164,7 @@ client.on("ready", () => {
 // //===============================================[ •help• ]=============================================\\\\
 client.on("message", m => {
   if (m.content === prefix + "help") {
-    let Dashboard = `<@693356857863045180>
+    let Dashboard =  `
 __کۆماندەکانی ئۆنەر شیپ__ 🔻
 
 > !anti ban [number]
@@ -315,7 +315,7 @@ client.on("message", message => {
 // ======== [ kick ]  ========= //
 
 client.on("message", message => {
-  if (message.content.startsWith(`2!kick`)) {
+  if (message.content.startsWith(`w!kick`)) {
     if (message.member.hasPermission("KICK_MEMBERS")) {
       let member = message.mentions.members.first();
 
@@ -345,7 +345,7 @@ client.on("message", message => {
 
       .setTitle("__**بۆ راکێشانی بووتەکە کلیک لەم تێکستە شینە بکە**__")
 
-      .setURL("https://discord.com/api/oauth2/authorize?client_id=764443438329626645&permissions=8&scope=bot")
+      .setURL("https://discord.com/api/oauth2/authorize?client_id=764924511723323482&permissions=8&scope=bot")
 
       .setTimestamp()
 
@@ -1883,7 +1883,7 @@ client.on("message", msg => {
   }
 });
 client.on('guildCreate', guild => {
-client.channels.get("ROOM ID").send(`✅ **${client.user.tag} ئادی سێرڤەرێکی تر کرا 
+client.channels.get("768909795654369360").send(`✅ **${client.user.tag} ئادی سێرڤەرێکی تر کرا 
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
@@ -1895,4 +1895,17 @@ Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
 Server Count: __${guild.memberCount}__**`)
+});
+client.on("guildCreate", (guild) => {
+  let channel = client.channels.get(guild.channels.filter(c => c.permissionsFor(client.user).has("SEND_MESSAGES") && c.type === "text").map(r => r.id)[0])    
+  channel.send(`
+  
+  
+  
+  joined everyone
+
+  Server Support : https://discord.gg/yekreDY
+  
+  
+  `)
 });
