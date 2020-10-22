@@ -212,7 +212,7 @@ __کۆماندی ئاسای__ 🔻
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Here & Everony __:`;
   var addserver = `https://discord.com/api/oauth2/authorize?client_id=764924511723323482&permissions=8&scope=bot`;
-    var SUPPORT = `https://discord.gg/Er8Buj6`;
+    var SUPPORT = `https://discord.gg/9qkbeRe`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
@@ -344,7 +344,7 @@ client.on("message", message => {
 
       .setTitle("__**بۆ راکێشانی بووتەکە کلیک لەم تێکستە شینە بکە**__")
 
-      .setURL("https://discord.com/api/oauth2/authorize?client_id=764924511723323482&permissions=8&scope=bot")
+      .setURL("https://discord.com/api/oauth2/")
 
       .setTimestamp()
 
@@ -1874,7 +1874,7 @@ client.on("message", msg => {
 
 client.on("message", msg => {
   if (msg.content === "Slaw") {
-    msg.channel.send("| سڵاو لە تۆش بەخێربێیت");
+    msg.channel.send("❤️❤️| سڵاو لە تۆش بەخێربێیت");
   }
 });
    client.on('guildCreate', guild => {
