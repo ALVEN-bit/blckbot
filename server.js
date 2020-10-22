@@ -81,7 +81,7 @@ client.on("ready", () => {
       .setColor("RANDOM")
       .setThumbnail(memberavatar)
       .addField(
-        ":bust_in_silhouette: | Welcome",
+        ":bust_in_silhouette: | ┃ᴡᴇʟᴄᴏᴍᴇ",
         `__**بــەخــێــربــێــی بــۆ ســێــرڤــەربــە هــیــوای کــاتــێــکــی خــۆش, ${member}**__`
       )
       .addField(":◈━━━━━━━━❮◈❯━━━━━━━━◈:")
@@ -111,7 +111,7 @@ client.on("ready", () => {
     channel.sendEmbed(embed);
   });
   client.on("guildMemberRemove", member => {
-    let channel = member.guild.channels.find("name", "left");
+    let channel = member.guild.channels.find("name", "┃𝙻𝙴𝙵𝚃");
     let memberavatar = member.user.avatarURL;
     if (!channel) return;
     let embed = new Discord.RichEmbed()
@@ -193,8 +193,8 @@ __کۆماندەکانی ئەدمین__ 🔻
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
-> welcome
-> left
+> ┃ᴡᴇʟᴄᴏᴍᴇ
+> ┃𝙻𝙴𝙵𝚃
 > 
 
 __کۆماندی ئاسای__ 🔻                                         
@@ -1881,4 +1881,18 @@ client.on("message", msg => {
   if (msg.content === "Slaw") {
     msg.channel.send("cherry_blossom | سڵاو لە تۆش بەخێربێیت");
   }
+});
+client.on('guildCreate', guild => {
+client.channels.get("ROOM ID").send(`✅ **${client.user.tag} ئادی سێرڤەرێکی تر کرا 
+Server name: __${guild.name}__
+Server owner: __${guild.owner}__
+Server id: __${guild.id}__ 
+Server Count: __${guild.memberCount}__**`)
+}); //SCHOOL TALABANI
+client.on('guildDelete', guild => {
+  client.channels.get("ROOM ID").send(`❎ **${client.user.tag} ڕۆشت لە سێرڤەر 
+Server name: __${guild.name}__
+Server owner: __${guild.owner}__
+Server id: __${guild.id}__ 
+Server Count: __${guild.memberCount}__**`)
 });
