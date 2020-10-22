@@ -167,29 +167,29 @@ client.on("message", m => {
     let Dashboard =  `
 __کۆماندەکانی ئۆنەر شیپ__ 🔻
 
-> !anti ban [number]
-> !anti kick [number]
-> !anti channelD [number]
-> !anti channelC [number]
-> !anti roleD [number]
-> !anti roleC [number]
-> !anti time [number]
-> !anti bots [on / off]
-> !settings
+> anti ban [number]
+> anti kick [number]
+> anti channelD [number]
+> anti channelC [number]
+> anti roleD [number]
+> anti roleC [number]
+> anti time [number]
+> anti bots [on / off]
+> settings
 
 __کۆماندەکانی ئەدمین__ 🔻
 
-> !lock
-> !unlock
-> !ban
-> !kick
-> !mute
-> !unmute
-> !say
-> !bc
-> !giveaway
-> !day
-> !clear
+> lock
+> unlock
+> ban
+> kick
+> mute
+> unmute
+> say
+> bc
+> giveaway
+> day
+> clear
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
@@ -199,25 +199,25 @@ __ژورەکان بەم شێوەیە لێبکە__🔻                           
 
 __کۆماندی ئاسای__ 🔻                                         
 
-> !bots
-> !invite
-> !about
-> !server
-> !user
-> !wara
-> !avatar
-> !image
-> !report
+> bots
+> invite
+> bot
+> server
+> user
+> wara
+> avatar
+> image
+> 
 
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Here & Everony __:`;
-  var addserver = ``;
-    var SUPPORT = `https://discord.gg/stfX2EN`;
+  var addserver = `https://discord.com/api/oauth2/authorize?client_id=764924511723323482&permissions=8&scope=bot`;
+    var SUPPORT = `https://discord.gg/Er8Buj6`;
     let embed = new Discord.RichEmbed()
       .setTitle(`${m.author.username}`)
       .setDescription(
         `**${Dashboard}**
-  **[Add To Your Server ](${addserver})** | **[ Server Support](${SUPPORT})**`
+  **[Add To Your Server BOT](${addserver})** | **[ Server Support BOT ](${SUPPORT})**`
       )
       .setImage("");
     m.channel.send(embed);
