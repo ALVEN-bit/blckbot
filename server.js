@@ -197,11 +197,11 @@ __کۆماندەکانی ئەدمین__ 🔻
 > 2!kick
 > 2!mute
 > 2!unmute
-> 2!say
-> 2!bc
-> 2!giveaway
-> 2!day
-> 2!clear
+> !say
+> !bc
+> !giveaway
+> !day
+> !clear
 
 __ژورەکان بەم شێوەیە لێبکە__🔻                                           .
 
@@ -211,15 +211,15 @@ __ژورەکان بەم شێوەیە لێبکە__🔻                           
 
 __کۆماندی ئاسای__ 🔻                                         
 
-> 2!bots
-> 2!invite
-> 2!about
-> 2!server
-> 2!user
-> 2!wara
-> 2!avatar
-> 2!image
-> 2!report
+> !bots
+> !invite
+> !about
+> !server
+> !user
+> !wara
+> !avatar
+> !image
+> !report
 
 > Best Discord __Anti Spam__.
 > Best Discord __Anti Link & jnew__.
