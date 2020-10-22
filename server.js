@@ -344,7 +344,7 @@ client.on("message", message => {
 
       .setTitle("__**بۆ راکێشانی بووتەکە کلیک لەم تێکستە شینە بکە**__")
 
-      .setURL("https://discord.com/api/oauth2/")
+      .setURL("https://discord.com/api/oauth2/authorize?client_id=768946664442298409&permissions=8&scope=bot")
 
       .setTimestamp()
 
@@ -377,13 +377,13 @@ client.on("message", message => {
       .addField("**چەناڵ** : ", `» ${client.channels.size} `, true)
       .addField("**میمبەر** : ", `» ${client.users.size} `, true)
       .addField("**ناوی بوت** :  ", `» ${client.user.tag} `, true)
-      .addField("**OWNER** :  ", `» <@766645466778697778>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**CO OWNER** :  ", `» <@718882264582324364>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**CO OWNER** :  ", `» <@718920448179699733>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**CO OWNER** :  ", `» <@749730479267381348>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**CO OWNER** :  ", `» <@761326713547653140>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
       .addField("** CO-OWNER** :  ", `» <@693356857863045180>`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
-      .addField("**دروستکەر بوت له لايان سكواتى KT SQUAT** :  ", `» https://discord.gg/cZtFTgH`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
+      .addField("**دروستکەر بوت له لايان KS・RAES** :  ", `»https://discord.gg/9qkbeRe`, true) // تعديل مهم BlackStormذا الرقم لايدي حسابك
    
-    .setImage("")
+    .setImage("https://cdn.discordapp.com/attachments/763028854902095893/768955386446217236/PicsArt_08-24-07.49.43.png")
       .setFooter(message.author.username, message.author.avatarURL);
     message.channel.send(bot);
   }
